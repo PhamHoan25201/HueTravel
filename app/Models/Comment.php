@@ -16,4 +16,7 @@ class Comment extends Model
         'content',
         'status'
     ];
+    public function News(){
+        return $this->belongsTo(News::class);
+    }
 }
