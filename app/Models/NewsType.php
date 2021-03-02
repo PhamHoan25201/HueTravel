@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class News_Type extends Model
+class NewsType extends Model
 {
     use HasFactory;
     protected $table = 'news_type';
@@ -14,4 +14,11 @@ class News_Type extends Model
         'name',
         'status'
     ];
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+    public function News(){
+        return $this->hasMany(News::class, 'news_type_id');
+    }
 }

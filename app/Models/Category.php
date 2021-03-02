@@ -13,4 +13,8 @@ class Category extends Model
         'name', 
         'status'
     ];
+
+    public function newsType(){
+        return $this->hasMany(NewsType::class,'category_id');
+    }
 }
