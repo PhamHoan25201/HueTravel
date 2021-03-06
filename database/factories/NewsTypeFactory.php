@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\News_Type;
+use App\Models\NewsType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class News_TypeFactory extends Factory
+class NewsTypeFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = News_Type::class;
+    protected $model = NewsType::class;
 
     /**
      * Define the model's default state.
@@ -23,7 +23,7 @@ class News_TypeFactory extends Factory
     {
         return [
             //
-            'category_id'=> 41, 
+            'category_id'=> 1, 
             'name'=>$this->faker->name,
             'status'=>$this->faker->numberBetween(0,1)
 
