@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AdvertisementTableSeeder::class,
             CategoryTableSeeder::class,
-            News_TypeTableSeeder::class,
+            NewsTypeTableSeeder::class,
             UserTableSeeder::class,
             NewsTableSeeder::class,
             CommentTableSeeder::class
