@@ -15,21 +15,25 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 Route::get('foo', function (){
     $a=1;
     $b=2;
     return $a.'+'.$b. '='.($a + $b);
 });
-Route::get('User/{id}', function ($id){
-    return 'User'.$id;
+
+Route::get('user/{age}', function ($age){
+    return 'Tuoi: '.$age;
+})->where('id', '[0-9]+')->middleware('checkage');
+
+Route::get('user/{name}', function ($name){
+    return 'Chuoi'.$name;
 });
+
 Route::get('post/{post}/comment/{comment}', function ($postID, $CommentID){
     return 'Post: '.$postID.'<br>'.' Comment: '.$CommentID;
 });
-Route::get('user/{name?}', function ($name= 'hahaha'){
-    return $name;
-});
+
 Route::prefix('Admin')->group(function(){
     Route::get('User/{id}', function ($id){
         return 'User'.$id;
