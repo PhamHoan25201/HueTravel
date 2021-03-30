@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="page-title">
-    <h3>Create Category</h3>
+    <h3>{{ trans('tpl.category.create.title') }}</h3>
 </div>
 <div class="section">
     <div class="row">
@@ -11,13 +11,13 @@
         <form action="{{ route('category.store') }}" method="post">
           {{ csrf_field() }}
             <div class="form-group">
-            <label for="email">Tên thể loại</label>
+            <label for="email">{{ trans('tpl.category.create.name') }}:</label>
                 <input type="text" class="form-control" value="" name="name" >
             </div>
             <div class="form-group">
-            <label for="pwd">Status:</label>
+            <label for="pwd">{{ trans('tpl.category.create.status') }}:</label>
             <select name="status" id="" class="form-control" >
-                <option value="1">Hiện</option>
+                <option value="1">{{ trans('tpl.category.create.status.show') }}</option>
                 <option value="0">Ẩn</option>
             </select>
             </div>

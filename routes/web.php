@@ -88,5 +88,52 @@ Route::prefix('Admin')->group(function(){
         Category::destroy($id);
         return redirect()->route('category.index');
     })->name('category.destroy');
+
+    
+    /**
+     * Route for NewsType
+     * 
+     */
+    //Index URI:  newstype 
+    Route::get('newstype', function(){
+        $listNewsType = NewsType::all();
+        return view('newstype.index', array('listNewsType' => $listNewsType));
+    })->name('newstype.index');
+    //Create URI: newstype/create
+    Route::get('newstype/create', function(){
+        return view('newstype.create');
+    })->name('newstype.create');
+    //Store URI: newstype
+    Route::post('newstype', function(Request $request){
+        NewsType::create($request->all());
+        return redirect()->route('newstype.index');
+    })->name('newstype.store');
+
+    //Show URI: newstype/{id}
+    Route::get('newstype/{id}', function($id){
+        $newstype = NewsType::find($id);
+        return view('newstype.show', array('newstype' => $newstype));
+    })->name('newstype.show');
+
+    //Edit URI: newstype/{id}/edit
+    Route::get('newstype/{id}/edit', function($id){
+        $newstype = NewsType::find($id);
+        return view('newstype.edit', array('newstype' => $newstype));
+    })->name('newstype.edit');
+
+    //Update URI: newstype/{id}
+    Route::put('newstype/{id}', function($id, Request $request){
+        $newstype = NewsType::find($id);
+        $newstype->update($request->all());
+        return redirect()->route('newstype.index');
+    })->name('newstype.update');
+
+    //Delete URI: newstype/{id}
+    Route::delete('newstype/{id}', function($id){
+        NewsType::destroy($id);
+        return redirect()->route('newstype.index');
+    })->name('newstype.destroy');
+
+
     
 });
