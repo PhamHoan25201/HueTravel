@@ -33,6 +33,11 @@ Route::prefix('Admin')->group(function(){
 
     Route::resource('category', 'App\Http\Controllers\CategoryController');
 
+    /**
+     * Route for NewsType
+     * 
+     */
+    Route::resource('newstype', 'App\Http\Controllers\NewsTypeController');
     
    
     

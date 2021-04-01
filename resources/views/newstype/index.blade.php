@@ -3,7 +3,7 @@
 {{$n = 1}} 
 @section('content')
 <div class="page-title">
-  <h3>Index News Type</h3>
+  <h3>{{ trans('tpl.newstype.index.title') }}</h3>
 </div>
 <div class="section">
   <div class="row">
@@ -12,9 +12,9 @@
                    <thead>
                       <tr>
                           <th>#</th>
-                          <th>Name NewsType</th>
-                          <th>Type Category</th>
-                          <th>Status</th>
+                          <th>{{ trans('tpl.newstype.index.name') }}</th>
+                          <th>{{ trans('tpl.newstype.index.typecategory') }}</th>
+                          <th>{{ trans('tpl.newstype.index.status') }}</th>
                       </tr>
                   </thead>               
                @foreach($listNewsType as $newstype)
@@ -24,12 +24,12 @@
                   <td><a href="{{ route('newstype.show',$newstype->category->id) }}">{{ $newstype->category->name }}</a></td>
                   <td>{{ $newstype->status }}</td>
                   
-                  <td><a href="{{ route('newstype.edit',$newstype->id) }}">Edit</a></td>
+                  <td><a href="{{ route('newstype.edit',$newstype->id) }}">{{ trans('tpl.newstype.index.edit') }}</a></td>
                   <td>
                   <form action="{{ route('newstype.destroy',$newstype->id )}}" method="POST">
                     {{method_field('DELETE')}}
                     {{csrf_field()}}
-                    <input type="submit" class="btn btn-danger" value="Delete"/>
+                    <input type="submit" class="btn btn-danger" value="{{ trans('tpl.newstype.index.delete') }}"/>
                   </form>
                   </td>
                 </tr>
