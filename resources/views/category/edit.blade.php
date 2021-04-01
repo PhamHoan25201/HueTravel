@@ -6,7 +6,7 @@
     <div class="section">
         <div class="row">
             <div class="col-12">
-            <form action="{{ route('category.update', ['id' => $category->id]) }}" method="post">
+            <form action="{{ route('category.update',  $category->id) }}" method="post">
               {{ csrf_field() }}
               {{ method_field('put') }}
                 <div class="form-group">

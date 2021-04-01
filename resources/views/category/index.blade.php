@@ -20,12 +20,12 @@
                @foreach($listCategory as $category)
                 <tr>
                   <th>{{ $n++ }}</th>
-                  <td><a href="{{ route('category.show',['id' => $category->id]) }}">{{ $category->name }}</a></td>
+                  <td><a href="{{ route('category.show', $category->id) }}">{{ $category->name }}</a></td>
                   <td>{{ $category->status }}</td>
                   
-                  <td><a href="{{ route('category.edit',['id' => $category->id]) }}">{{ trans('tpl.category.index.edit') }}</a></td>
+                  <td><a href="{{ route('category.edit', $category->id)}}">{{ trans('tpl.category.index.edit') }}</a></td>
                   <td>
-                  <form action="{{ route('category.destroy', ['id' => $category->id ])}}" method="POST">
+                  <form action="{{ route('category.destroy',$category->id)}}" method="POST">
                     {{method_field('DELETE')}}
                     {{csrf_field()}}
                     <input type="submit" class="btn btn-danger" value="{{ trans('tpl.category.index.delete') }}"/>
