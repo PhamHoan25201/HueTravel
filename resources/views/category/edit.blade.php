@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')        
     <div class="page-title">
-        <h3>Edit Category</h3>
+        <h3>{{ trans('tpl.category.edit.title') }}</h3>
     </div>
     <div class="section">
         <div class="row">
@@ -10,18 +10,18 @@
               {{ csrf_field() }}
               {{ method_field('put') }}
                 <div class="form-group">
-                <label for="email">Tên thể loại</label>
+                <label for="email">{{ trans('tpl.category.edit.name') }}:</label>
                     <input type="text" class="form-control" value="{{$category->name}}" name="name" >
                 </div>
                 <div class="form-group">
-                <label for="pwd">Status:</label>
+                <label for="pwd">{{ trans('tpl.category.edit.status') }}:</label>
                     <!--<input type="text" class="form-control" name="anhien">-->
                 <select name="status" id="" class="form-control" >
-                    <option value="1" <?php if($category->status==1) echo "selected"?>>Hiện</option>
-                    <option value="0"<?php if($category->status==0) echo "selected"?>>Ẩn</option>
+                    <option value="1" @if($category->status==1){{"selected"}}@endif>{{ trans('tpl.category.index.status.show') }}</option>
+                    <option value="0" @if($category->status==0){{"selected"}}@endif>{{ trans('tpl.category.index.status.hidden') }}</option>
                 </select>
                 </div>
-                <button type="submit" class="btn btn-primary btn-default">Submit</button>
+                <button type="submit" class="btn btn-primary btn-default">{{ trans('tpl.newstype.index.submit') }}</button>
             </form>
             </div>
         </div>

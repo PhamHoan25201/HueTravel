@@ -60,11 +60,11 @@
                     <ul class="submenu ">
                         
                         <li>
-                            <a href="list_loaitin.php">List Loại tin</a>
+                            <a href="{{route('newstype.index')}}">List Loại tin</a>
                         </li>
                         
                         <li>
-                            <a href="add_loaitin.php">Add Loại tin</a>
+                            <a href="{{route('newstype.create')}}">Add Loại tin</a>
                         </li>
 
                     </ul>

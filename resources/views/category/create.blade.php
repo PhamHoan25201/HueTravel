@@ -17,11 +17,11 @@
             <div class="form-group">
             <label for="pwd">{{ trans('tpl.category.create.status') }}:</label>
             <select name="status" id="" class="form-control" >
-                <option value="1">Hiện</option>
-                <option value="0">Ẩn</option>
+                <option value="1">{{ trans('tpl.category.index.status.show') }}</option>
+                <option value="0">{{ trans('tpl.category.index.status.hidden') }}</option>
             </select>
             </div>
-            <button type="submit" class="btn btn-primary btn-default">Submit</button>
+            <button type="submit" class="btn btn-primary btn-default">{{ trans('tpl.newstype.index.submit') }}</button>
         </form>
         </div>
     </div>
