@@ -16,18 +16,17 @@
                           <th>Type Category</th>
                           <th>Status</th>
                       </tr>
-                  </thead>
-
+                  </thead>               
                @foreach($listNewsType as $newstype)
                 <tr>
                   <th>{{ $n++ }}</th>
-                  <td><a href="{{ route('newstype.show',['id' => $newstype->id]) }}">{{ $newstype->name }}</a></td>
-                  <td><a href="{{ route('newstype.show',['id' => $newstype->category_id]) }}">{{ $newstype->category_id }}</a></td>
+                  <td><a href="{{ route('newstype.show', $newstype->id) }}">{{ $newstype->name }}</a></td>
+                  <td><a href="{{ route('newstype.show',$newstype->category->id) }}">{{ $newstype->category->name }}</a></td>
                   <td>{{ $newstype->status }}</td>
                   
-                  <td><a href="{{ route('newstype.edit',['id' => $newstype->id]) }}">Edit</a></td>
+                  <td><a href="{{ route('newstype.edit',$newstype->id) }}">Edit</a></td>
                   <td>
-                  <form action="{{ route('newstype.destroy', ['id' => $newstype->id ])}}" method="POST">
+                  <form action="{{ route('newstype.destroy',$newstype->id )}}" method="POST">
                     {{method_field('DELETE')}}
                     {{csrf_field()}}
                     <input type="submit" class="btn btn-danger" value="Delete"/>

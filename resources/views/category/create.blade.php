@@ -17,7 +17,7 @@
             <div class="form-group">
             <label for="pwd">{{ trans('tpl.category.create.status') }}:</label>
             <select name="status" id="" class="form-control" >
-                <option value="1">{{ trans('tpl.category.create.status.show') }}</option>
+                <option value="1">Hiện</option>
                 <option value="0">Ẩn</option>
             </select>
             </div>

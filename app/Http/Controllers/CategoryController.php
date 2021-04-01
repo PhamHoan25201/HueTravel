@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
-//use Illuminate\Support\Facades\DB;
+//use App\Models\NewsType;
 
 class CategoryController extends Controller
 {
@@ -15,21 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //Eloquent query
-        $categorys = Category::all();
-        foreach ($categorys as $category) {
-            echo $category->name .'<br>';
-        }
-        /*
-        **Truy vấn kèm điều kiện
-         $categorys = DB::select('select * from category where id = :id', ['id'=>1]);
-         foreach ($categorys as $category) {
-             echo $category->name .'<br>';
-         }
-         **Insert dữ liệu
-         DB::insert('insert into category (id, name) values (?, ?)', [1, 'Marc']);
-         */
-        
+        $listCategory = Category::all();
+        return view('Category.index', array('listCategory' => $listCategory));
     }
 
     /**
@@ -39,8 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
-        
+        return view('category.create');
     }
 
     /**
@@ -51,7 +37,8 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Category::create($request->all());
+        return redirect()->route('category.index');
     }
 
     /**
@@ -62,7 +49,8 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $category = Category::find($id);
+        return view('category.show', array('category' => $category));
     }
 
     /**
@@ -73,7 +61,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        return view('category.edit', array('category' => $category));
     }
 
     /**
@@ -85,7 +74,9 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::find($id);
+        $category->update($request->all());
+        return redirect()->route('category.index');
     }
 
     /**
@@ -96,6 +87,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::destroy($id);
+        return redirect()->route('category.index');
     }
 }
