@@ -22,6 +22,10 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function User(){
+        return $this->hasMany(News::class, 'user_id');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

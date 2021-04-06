@@ -80,13 +80,12 @@
                     <ul class="submenu ">
                         
                         <li>
-                            <a href="list_tin.php">List Tin</a>
+                            <a href="{{route('news.index')}}">List Tin</a>
                         </li>
                         
                         <li>
-                            <a href="add_tin.php">Add Tin</a>
+                            <a href="{{route('news.create')}}">Add Tin</a>
                         </li>
-
                        
 
                     </ul>

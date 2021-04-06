@@ -23,7 +23,7 @@ class NewsFactory extends Factory
     {
         return [
             //
-            'news_type_id'=> 2,
+            'news_type_id'=> 6,
             'user_id'=> 1,
             'tieu_de'=>$this->faker->text,
             'tom_tat'=>$this->faker->text

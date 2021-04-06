@@ -59,6 +59,31 @@ return [
     'newstype.edit.nameCategory' => 'Name Category',
 
     'newstype.show.title' => 'Show NewsType',
+
+    /**
+     * Language for template news
+     */
+    'news.index.title' => 'List News',
+    'news.index.name' => 'Name News',
+    'news.index.typenewstype' => 'Type NewsType',
+    'news.index.author' => 'Author',
+    'news.index.summary' => 'Summary',
+    
+    'news.index.edit' => 'Edit',
+    'news.index.delete' => 'Delete',
+    'news.index.submit' => 'Submit',
+
+    'news.create.title' => 'Create News',
+    'news.create.name' => 'Name News',
+    'news.create.summary' => 'Summary',
+    'news.create.namenewstype' => 'Name NewsType',
+
+    'news.edit.title' => 'Edit News',
+    'news.edit.name' => 'Name News',
+    'news.edit.summary' => 'Summary',
+    'news.edit.namenews' => 'Name NewsType',
+
+    'news.show.title' => 'Show News',
     
 
 ];
