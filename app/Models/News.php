@@ -21,5 +21,8 @@ class News extends Model
     public function NewsType(){
         return $this->belongsTo(NewsType::class);
     }
+    public function User(){
+        return $this->belongsTo(User::class);
+    }
 }
 

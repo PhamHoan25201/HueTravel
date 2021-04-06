@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\NewsTypeController;
+use App\Http\Controllers\NewsController;
 use App\Models\Category;
 use App\Models\NewsType;
 use App\Http\Resources\NewsTypeResource;
@@ -31,13 +33,22 @@ Route::prefix('Admin')->group(function(){
     // Index URI: category
     // Route::get('category', 'CategoryController@index')->name('category.index');
 
-    Route::resource('category', 'App\Http\Controllers\CategoryController');
+    //Route::resource('category', 'App\Http\Controllers\CategoryController');
+    Route::resource('category', CategoryController::class);
 
     /**
      * Route for NewsType
      * 
      */
-    Route::resource('newstype', 'App\Http\Controllers\NewsTypeController');
+    Route::resource('newstype', NewsTypeController::class);
+
+    /**
+     * Route for NewsType
+     * 
+     */
+    Route::resource('news', NewsController::class);
+
+
     
    
     

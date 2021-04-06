@@ -23,7 +23,7 @@ class CommentFactory extends Factory
     {
         return [
             //
-            'news_id' => 3,
+            'news_id' => 15,
             'user_id' => 1,
             'date'=> $this->faker->date,
             'content'=> $this->faker->text,

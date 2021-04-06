@@ -59,6 +59,30 @@ return [
     'newstype.edit.nameCategory' => 'Tên Thể loại',
 
     'newstype.show.title' => 'Hiển thị Loại tin',
+
+     /**
+     * Language for template news
+     */
+    'news.index.title' => 'Danh sách tin',
+    'news.index.name' => 'Tiêu đề',
+    'news.index.typenewstype' => 'Loại tin',
+    'news.index.author' => 'Tác giả',
+    'news.index.summary' => 'Tóm tắt',
+    'news.index.edit' => 'Chỉnh sửa',
+    'news.index.delete' => 'Xóa',
+    'news.index.submit' => 'Xác nhận',
+
+    'news.create.title' => 'Thêm Tin',
+    'news.create.name' => 'Tiêu đề',
+    'news.create.summary' => 'Tóm tắt',
+    'news.create.namenewstype' => 'Loại tin',
+
+    'news.edit.title' => 'Chỉnh sửa tin',
+    'news.edit.name' => 'Tiêu đề',
+    'news.edit.summary' => 'Tóm tắt',
+    'news.edit.namenews' => 'Loại tin',
+
+    'news.show.title' => 'Hiển thị Tin',
     
 
 ];
