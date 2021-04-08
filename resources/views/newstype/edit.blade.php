@@ -11,7 +11,12 @@
               {{ method_field('put') }}
                 <div class="form-group">
                 <label for="email">{{ trans('tpl.newstype.edit.name') }}:</label>
-                    <input type="text" class="form-control" value="{{$newstype->name}}" name="name" >
+                    <input type="text" class="form-control @if($errors->has('name')) name_error @endif" value="{{$newstype->name}}" name="name" >
+                    <i class="@if($errors->has('name')) name_error @endif"> 
+                        @if($errors->has('name'))
+                            {{ $errors->first('name') }}
+                        @endif 
+                    </i>
                 </div>
 
                 <div class="form-group">

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
+use \Illuminate\Support\Facades\Validator;
 //use App\Models\NewsType;
 
 class CategoryController extends Controller
@@ -35,7 +37,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
         Category::create($request->all());
         return redirect()->route('category.index');
@@ -50,6 +52,9 @@ class CategoryController extends Controller
     public function show($id)
     {
         $category = Category::find($id);
+        // if($category == null){
+        //     return redirect()->route('category.index')->with('message', 'Not found category');
+        // }
         return view('category.show', array('category' => $category));
     }
 
@@ -72,7 +77,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
         $category = Category::find($id);
         $category->update($request->all());

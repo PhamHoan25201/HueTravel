@@ -48,11 +48,4 @@ Route::prefix('Admin')->group(function(){
      */
     Route::resource('news', NewsController::class);
 
-
-    
-   
-    
-
-
-    
 });

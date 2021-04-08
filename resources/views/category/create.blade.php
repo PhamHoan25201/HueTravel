@@ -8,11 +8,26 @@
 <div class="section">
     <div class="row">
         <div class="col-12">
+            {{--Một cách validation:
+                 @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li> {{$error}}</li> 
+                        @endforeach
+                    </ul>
+                </div>
+            @endif            --}}
         <form action="{{ route('category.store') }}" method="post">
           {{ csrf_field() }}
             <div class="form-group">
             <label for="email">{{ trans('tpl.category.create.name') }}:</label>
-                <input type="text" class="form-control" value="" name="name" >
+                <input type="text" class="form-control @if($errors->has('name')) name_error @endif" value="" name="name" >
+               <i class="@if($errors->has('name')) name_error @endif"> 
+                    @if($errors->has('name'))
+                        {{ $errors->first('name') }}
+                    @endif 
+                </i>
             </div>
             <div class="form-group">
             <label for="pwd">{{ trans('tpl.category.create.status') }}:</label>
@@ -26,4 +41,5 @@
         </div>
     </div>
 </div>
+
 @endsection

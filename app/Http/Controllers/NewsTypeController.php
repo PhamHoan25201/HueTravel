@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\NewsTypeRequest;
 use App\Models\NewsType;
 use App\Models\Category;
 use App\Http\Resources\NewsTypeResource;
@@ -40,7 +41,7 @@ class NewsTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NewsTypeRequest $request)
     {
         //
         NewsType::create($request->all());
@@ -82,7 +83,7 @@ class NewsTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(NewsTypeRequest $request, $id)
     {
         //
         $newstype = NewsType::find($id);

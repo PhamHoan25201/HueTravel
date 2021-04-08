@@ -83,6 +83,21 @@ return [
     'news.edit.namenews' => 'Loại tin',
 
     'news.show.title' => 'Hiển thị Tin',
+
+    /**
+     * Language for error
+     */
+    'name.required' => 'Bắt buộc phải nhập tên',
+    'name.min'=> 'Tên phải trên 5 ký tự',
+    'name.max'=> 'Tên phải dưới 20 ký tự',
+
+    'tieu_de.required' => 'Bắt buộc phải nhập tiêu đề.',
+    'tieu_de.min'=> 'Tiêu đề phải trên 5 ký tự',
+    'tieu_de.max'=> 'Tiêu đề phải dưới 40 ký tự',
+
+    'tom_tat.required' => 'Bắt buộc phải nhập tóm tắt bài viết ',
+    'tom_tat.min'=> 'Tóm tắt bài viết phải trên 5 ký tự',
+    'tom_tat.max'=> 'Tóm tắt bài viết phải dưới 150 ký tự'
     
 
 ];
