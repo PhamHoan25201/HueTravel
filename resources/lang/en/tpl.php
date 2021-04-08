@@ -84,6 +84,21 @@ return [
     'news.edit.namenews' => 'Name NewsType',
 
     'news.show.title' => 'Show News',
+
+    /**
+     * Language for error
+     */
+    'name.required' => 'The name field is required.',
+    'name.min'=> 'The name must be at least 5 characters',
+    'name.max'=> 'The name may not be greater than 20 characters',
+
+    'tieu_de.required' => 'The title field is required.',
+    'tieu_de.min'=> 'The title must be at least 5 characters',
+    'tieu_de.max'=> 'The title may not be greater than 40 characters',
+
+    'tom_tat.required' => 'The summary field is required.',
+    'tom_tat.min'=> 'The summary must be at least 5 characters',
+    'tom_tat.max'=> 'The summary may not be greater than 150 characters'
     
 
 ];

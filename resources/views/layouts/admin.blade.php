@@ -6,6 +6,7 @@
     <title>Admin - News by Hoàn không G</title>
     
     <link rel="stylesheet" href="{{asset('/Admin/assets/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('/Admin/assets/css/Validation.css')}}">
     
 <link rel="stylesheet" href="{{asset('/Admin/assets/vendors/simple-datatables/style.css')}}">
 

@@ -11,7 +11,12 @@
               {{ method_field('put') }}
                 <div class="form-group">
                 <label for="email">{{ trans('tpl.category.edit.name') }}:</label>
-                    <input type="text" class="form-control" value="{{$category->name}}" name="name" >
+                    <input type="text" class="form-control @if($errors->has('name')) name_error @endif" value="{{$category->name}}" name="name" >
+                    <i class="@if($errors->has('name')) name_error @endif"> 
+                        @if($errors->has('name'))
+                            {{ $errors->first('name') }}
+                        @endif 
+                    </i>
                 </div>
                 <div class="form-group">
                 <label for="pwd">{{ trans('tpl.category.edit.status') }}:</label>

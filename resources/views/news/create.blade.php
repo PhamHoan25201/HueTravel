@@ -10,11 +10,21 @@
               {{ csrf_field() }}
                 <div class="form-group">
                 <label for="email">{{ trans('tpl.news.edit.name') }}:</label>
-                    <input type="text" class="form-control" value="" name="tieu_de" >
+                    <input type="text" class="form-control @if($errors->has('tieu_de')) name_error @endif " value="" name="tieu_de" >
+                    <i class="@if($errors->has('tieu_de')) name_error @endif"> 
+                        @if($errors->has('tieu_de'))
+                            {{ $errors->first('tieu_de') }}
+                        @endif 
+                    </i>
                 </div>
                 <div class="form-group">
                     <label for="email">{{ trans('tpl.news.edit.summary') }}:</label>
-                        <input type="text" class="form-control" value="" name="tom_tat" >
+                        <input type="text" class="form-control @if($errors->has('tom_tat')) name_error @endif" value="" name="tom_tat" >
+                        <i class="@if($errors->has('tom_tat')) name_error @endif"> 
+                            @if($errors->has('tom_tat'))
+                                {{ $errors->first('tom_tat') }}
+                            @endif 
+                        </i>
                     </div>
 
                 <div class="form-group">

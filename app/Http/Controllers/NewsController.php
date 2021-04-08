@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\NewsRequest;
 use App\Models\NewsType;
 use App\Models\News;
 use App\Models\User;
@@ -43,7 +44,7 @@ class NewsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NewsRequest $request)
     {
         //
         News::create($request->all());
@@ -88,7 +89,7 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(NewsRequest $request, $id)
     {
         //
         $news = News::find($id);
