@@ -20,6 +20,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'url_img',
+        'ngay_sinh',
+        'gioi_tinh',
+        'phan_quyen'
     ];
 
     public function User(){

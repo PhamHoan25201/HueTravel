@@ -13,7 +13,13 @@ class News extends Model
         'news_type_id', 
         'user_id',
         'tieu_de',
-        'tom_tat'
+        'tom_tat',
+        'noi_dung',
+        'url_img',
+        'ngay',
+        'so_lan_xem',
+        'tin_noi_bat',
+        'so_luot_like'
     ];
     public function Comment(){
         return $this->hasMany(Comment::class, 'news_id');
