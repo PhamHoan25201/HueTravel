@@ -29,7 +29,7 @@ class NewsFactory extends Factory
             'tom_tat'=>$this->faker->text,
             'noi_dung'=>$this->faker->text,
             'url_img'=>$this->faker->url,
-            'ngay'=>$this->faker->date,
+           
             'so_lan_xem'=>$this->faker->numberBetween(0,50),
             'tin_noi_bat'=>$this->faker->numberBetween(0,1),
             'so_luot_like'=>$this->faker->numberBetween(0,300)

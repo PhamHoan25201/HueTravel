@@ -16,7 +16,6 @@ class News extends Model
         'tom_tat',
         'noi_dung',
         'url_img',
-        'ngay',
         'so_lan_xem',
         'tin_noi_bat',
         'so_luot_like'

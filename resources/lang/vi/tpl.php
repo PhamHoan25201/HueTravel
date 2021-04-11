@@ -80,6 +80,8 @@ return [
     'news.edit.title' => 'Chỉnh sửa tin',
     'news.edit.name' => 'Tiêu đề',
     'news.edit.summary' => 'Tóm tắt',
+    'news.edit.url' => 'Đường dẫn hình ảnh',
+    'news.edit.content' => 'Nội dung',
     'news.edit.namenews' => 'Loại tin',
 
     'news.show.title' => 'Hiển thị Tin',
@@ -97,7 +99,15 @@ return [
 
     'tom_tat.required' => 'Bắt buộc phải nhập tóm tắt bài viết ',
     'tom_tat.min'=> 'Tóm tắt bài viết phải trên 5 ký tự',
-    'tom_tat.max'=> 'Tóm tắt bài viết phải dưới 150 ký tự'
+    'tom_tat.max'=> 'Tóm tắt bài viết phải dưới 150 ký tự',
+
+    'url_img.required' => 'Bắt buộc phải nhập URL.',
+    'url_img.min'=> 'URL phải trên 5 ký tự',
+    'url_img.max'=> 'URL phải dưới 150 ký tự',
+
+    'noi_dung.required' => 'Bắt buộc phải nhập nội dung.',
+    'noi_dung.min'=> 'Nội dung bài viết phải trên 5 ký tự',
+    'noi_dung.max'=> 'Nội dung bài viết phải dưới 5000 ký tự',
     
 
 ];
