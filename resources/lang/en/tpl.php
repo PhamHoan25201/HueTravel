@@ -81,6 +81,8 @@ return [
     'news.edit.title' => 'Edit News',
     'news.edit.name' => 'Name News',
     'news.edit.summary' => 'Summary',
+    'news.edit.url' => 'URL Image',
+    'news.edit.content' => 'Content',
     'news.edit.namenews' => 'Name NewsType',
 
     'news.show.title' => 'Show News',
@@ -98,7 +100,15 @@ return [
 
     'tom_tat.required' => 'The summary field is required.',
     'tom_tat.min'=> 'The summary must be at least 5 characters',
-    'tom_tat.max'=> 'The summary may not be greater than 150 characters'
+    'tom_tat.max'=> 'The summary may not be greater than 150 characters',
+
+    'url_img.required' => 'The URL field is required.',
+    'url_img.min'=> 'The URL must be at least 5 characters',
+    'url_img.max'=> 'The URL may not be greater than 150 characters',
+
+    'noi_dung.required' => 'The content field is required.',
+    'noi_dung.min'=> 'The content must be at least 5 characters',
+    'noi_dung.max'=> 'The content may not be greater than 5000 characters',
     
 
 ];

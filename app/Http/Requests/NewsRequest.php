@@ -27,6 +27,8 @@ class NewsRequest extends FormRequest
             //
             'tieu_de' => 'required | min:5 | max:40',
             'tom_tat' => 'required | min:5 | max:150',
+            'url_img' => 'required | min:5 | max:150',
+            'noi_dung' => 'required | min:5 | max:5000',
         ];
     }
     public function messages(){
@@ -38,6 +40,14 @@ class NewsRequest extends FormRequest
             'tom_tat.required' => trans('tpl.tom_tat.required'),
             'tom_tat.min' => trans('tpl.tom_tat.min'),
             'tom_tat.max' => trans('tpl.tom_tat.max'),
+
+            'url_img.required' => trans('tpl.url_img.required'),
+            'url_img.min' => trans('tpl.url_img.min'),
+            'url_img.max' => trans('tpl.url_img.max'),
+
+            'noi_dung.required' => trans('tpl.noi_dung.required'),
+            'noi_dung.min' => trans('tpl.noi_dung.min'),
+            'noi_dung.max' => trans('tpl.noi_dung.max'),
         ];
     }
 }

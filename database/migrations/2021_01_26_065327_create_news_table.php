@@ -29,7 +29,6 @@ class CreateNewsTable extends Migration
             $table->longText('tom_tat');
             $table->longText('noi_dung');
             $table->longText('url_img');
-            $table->date('ngay');
             $table->integer('so_lan_xem');
             $table->integer('tin_noi_bat');
             $table->integer('so_luot_like');
