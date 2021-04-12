@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NewsTypeController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\HomeController;
 use App\Models\Category;
 use App\Models\NewsType;
 use App\Http\Resources\NewsTypeResource;
@@ -23,10 +25,11 @@ use Illuminate\Http\Request;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
+
+Route::get('Adminn','App\Http\Controllers\LoginController@index')->name('login');
+
 Route::prefix('Admin')->group(function(){
-    Route::get('user/{id}', function ($id){
-        return 'user'.$id;
-    });
+    
     /**
      * Route for The Loai
      */
@@ -49,3 +52,9 @@ Route::prefix('Admin')->group(function(){
     Route::resource('news', NewsController::class);
 
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');

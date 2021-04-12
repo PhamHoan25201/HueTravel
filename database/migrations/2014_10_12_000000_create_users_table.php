@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->longText('url_img');
             $table->date('ngay_sinh');
             $table->string('gioi_tinh');
-            $table->string('phan_quyen');
+            $table->boolean('is_admin')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

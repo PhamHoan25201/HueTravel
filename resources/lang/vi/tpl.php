@@ -71,6 +71,11 @@ return [
     'news.index.edit' => 'Chỉnh sửa',
     'news.index.delete' => 'Xóa',
     'news.index.submit' => 'Xác nhận',
+    'news.index.content' => 'Nội dung',
+    'news.index.url' => 'Đường dẫn hình ảnh',
+    'news.index.views' => 'Lượt xem',
+    'news.index.hot_news' => 'Tin nổi bật',
+    'news.index.likes' => 'Lượt thích',
 
     'news.create.title' => 'Thêm Tin',
     'news.create.name' => 'Tiêu đề',

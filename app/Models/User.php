@@ -23,7 +23,7 @@ class User extends Authenticatable
         'url_img',
         'ngay_sinh',
         'gioi_tinh',
-        'phan_quyen'
+        'is_admin'
     ];
 
     public function User(){
