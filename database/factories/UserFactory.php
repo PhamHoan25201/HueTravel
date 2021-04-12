@@ -31,7 +31,7 @@ class UserFactory extends Factory
             'url_img'=>$this->faker->url,
             'ngay_sinh'=>$this->faker->date,
             'gioi_tinh'=>$this->faker->numberBetween(0,1),
-            'phan_quyen'=>$this->faker->numberBetween(0,1)
+        
             
         ];
     }

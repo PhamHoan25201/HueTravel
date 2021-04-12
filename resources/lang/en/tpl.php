@@ -68,6 +68,12 @@ return [
     'news.index.typenewstype' => 'Type NewsType',
     'news.index.author' => 'Author',
     'news.index.summary' => 'Summary',
+    'news.index.content' => 'Content',
+    'news.index.url' => 'URL Image',
+    'news.index.views' => 'Views',
+    'news.index.hot_news' => 'Hot News',
+    'news.index.likes' => 'Likes',
+
     
     'news.index.edit' => 'Edit',
     'news.index.delete' => 'Delete',

@@ -16,6 +16,11 @@
                           <th>{{ trans('tpl.news.index.typenewstype') }}</th>
                           <th>{{ trans('tpl.news.index.author') }}</th>
                           <th>{{ trans('tpl.news.index.summary') }}</th>
+                          <th>{{ trans('tpl.news.index.content') }}</th>
+                          <th>{{ trans('tpl.news.index.url') }}</th>
+                          <th>{{ trans('tpl.news.index.views') }}</th>
+                          <th>{{ trans('tpl.news.index.hot_news') }} </th>
+                          <th>{{ trans('tpl.news.index.likes') }} </th>
                       </tr>
                   </thead>               
                @foreach($listNews as $news)
@@ -25,6 +30,11 @@
                   <td><a href="{{ route('news.show',$news->newstype->id) }}">{{ $news->newstype->name}}</a></td>
                   <td><a href="{{ route('news.show',$news->User->id) }}">{{ $news->User->name }}</a></td>
                   <td><a href="{{ route('news.show',$news->id) }}">{{ $news->tom_tat }}</a></td>
+                  <td><a href="{{ route('news.show',$news->id) }}">{{ $news->noi_dung }}</a></td>
+                  <td><a href="{{ route('news.show',$news->id) }}">{{ $news->url_img }}</a></td>
+                  <td><a href="{{ route('news.show',$news->id) }}">{{ $news->so_lan_xem }}</a></td>
+                  <td><a href="{{ route('news.show',$news->id) }}">{{ $news->tin_noi_bat }}</a></td>
+                  <td><a href="{{ route('news.show',$news->id) }}">{{ $news->so_luot_like }}</a></td>
                   <td><a href="{{ route('news.edit',$news->id) }}">{{ trans('tpl.news.index.edit') }}</a></td>
                   <td>
                     <form action="{{ route('news.destroy',$news->id )}}" method="POST">
