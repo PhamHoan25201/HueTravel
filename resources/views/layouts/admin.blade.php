@@ -115,10 +115,10 @@
                     </a>
                     <ul class="submenu ">
                         <li>
-                            <a href="list_advertisement.php">List Advertisement</a>
+                            <a href="{{route('advertisement.index')}}">List Advertisement</a>
                         </li>
                         <li>
-                            <a href="add_advertisement.php">Add Advertisement</a>
+                            <a href="{{route('advertisement.create')}}">Add Advertisement</a>
                         </li>
                     </ul>
                 </li>
