@@ -94,6 +94,28 @@ return [
     'news.show.title' => 'Show News',
 
     /**
+     * Language for template Advertisement
+     */
+
+    'advertisement.index.title' => 'List Advertisement',
+    'advertisement.index.url1' => 'URL Image 1',
+    'advertisement.index.url2' => 'URL Image 2',
+    'advertisement.index.startdate' => 'Start date',
+    'advertisement.index.enddate' => 'End date',
+    'advertisement.index.description' => 'Description',
+
+    'advertisement.create.title' => 'Create Advertisement',
+    'advertisement.create.url1' => 'URL Image 1',
+    'advertisement.create.url2' => 'URL Image 2',
+    'advertisement.create.startdate' => 'Start date',
+    'advertisement.create.enddate' => 'End date',
+    'advertisement.create.description' => 'Description',
+
+    'advertisement.edit.title' => 'Edit Advertisement',
+    
+    'advertisement.show.title' => 'Show Advertisement',
+
+    /**
      * Language for error
      */
     'name.required' => 'The name field is required.',
@@ -115,6 +137,10 @@ return [
     'noi_dung.required' => 'The content field is required.',
     'noi_dung.min'=> 'The content must be at least 5 characters',
     'noi_dung.max'=> 'The content may not be greater than 5000 characters',
+
+    'description.required' => 'The description field is required.',
+    'description.min'=> 'The description must be at least 5 characters',
+    'description.max'=> 'The description may not be greater than 5000 characters',
     
 
 ];

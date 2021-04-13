@@ -92,6 +92,28 @@ return [
     'news.show.title' => 'Hiển thị Tin',
 
     /**
+     * Language for template Advertisement
+     */
+
+    'advertisement.index.title' => 'Danh sách Quảng cáo',
+    'advertisement.index.url1' => 'Đường dẫn hình ảnh 1',
+    'advertisement.index.url2' => 'Đường dẫn hình ảnh 2',
+    'advertisement.index.startdate' => 'Thời gian bắt đầu',
+    'advertisement.index.enddate' => 'Thời gian kết thúc',
+    'advertisement.index.description' => 'Mô tả',
+
+    'advertisement.create.title' => 'Tạo Quảng cáo',
+    'advertisement.create.url1' => 'Đường dẫn hình ảnh 1',
+    'advertisement.create.url2' => 'Đường dẫn hình ảnh 2',
+    'advertisement.create.startdate' => 'Thời gian bắt đầu',
+    'advertisement.create.enddate' => 'Thời gian kết thúc',
+    'advertisement.create.description' => 'Mô tả',
+
+    'advertisement.edit.title' => 'Chỉnh sửa Quảng cáo',
+    
+    'advertisement.show.title' => 'Hiển thị Quảng cáo',
+
+    /**
      * Language for error
      */
     'name.required' => 'Bắt buộc phải nhập tên',

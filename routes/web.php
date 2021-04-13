@@ -6,6 +6,7 @@ use App\Http\Controllers\NewsTypeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdvertisementController;
 use App\Models\Category;
 use App\Models\NewsType;
 use App\Http\Resources\NewsTypeResource;
@@ -26,7 +27,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('Adminn','App\Http\Controllers\LoginController@index')->name('login');
+//Route::get('Adminn','App\Http\Controllers\LoginController@index')->name('login');
 
 Route::prefix('Admin')->group(function(){
     
@@ -50,6 +51,11 @@ Route::prefix('Admin')->group(function(){
      * 
      */
     Route::resource('news', NewsController::class);
+    /**
+     * Route for Advertisement
+     * 
+     */
+    Route::resource('advertisement', AdvertisementController::class);
 
 });
 

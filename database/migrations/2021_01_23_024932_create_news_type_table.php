@@ -25,7 +25,7 @@ class CreateNewsTypeTable extends Migration
             $table->timestamps();
         });
     }
-
+// dat dep trai nhat qua dat
     /**
      * Reverse the migrations.
      *

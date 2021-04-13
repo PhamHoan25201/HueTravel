@@ -26,11 +26,12 @@
                @foreach($listNews as $news)
                 <tr>
                   <th>{{ $n++ }}</th>
+                  
                   <td><a href="{{ route('news.show', $news->id) }}">{{ $news->tieu_de }}</a></td>
-                  <td><a href="{{ route('news.show',$news->newstype->id) }}">{{ $news->newstype->name}}</a></td>
+                  <td><a href="{{ route('news.show',$news->newstype->id) }}">{{  substr($news->newstype->name,0,20)}}</a></td>
                   <td><a href="{{ route('news.show',$news->User->id) }}">{{ $news->User->name }}</a></td>
-                  <td><a href="{{ route('news.show',$news->id) }}">{{ $news->tom_tat }}</a></td>
-                  <td><a href="{{ route('news.show',$news->id) }}">{{ $news->noi_dung }}</a></td>
+                  <td><a href="{{ route('news.show',$news->id) }}">{{ substr($news->tom_tat,0,20) }}</a></td>
+                  <td><a href="{{ route('news.show',$news->id) }}">{{  substr($news->noi_dung,0,20) }}</a></td>
                   <td><a href="{{ route('news.show',$news->id) }}">{{ $news->url_img }}</a></td>
                   <td><a href="{{ route('news.show',$news->id) }}">{{ $news->so_lan_xem }}</a></td>
                   <td><a href="{{ route('news.show',$news->id) }}">{{ $news->tin_noi_bat }}</a></td>
