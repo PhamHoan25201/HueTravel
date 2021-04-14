@@ -7,6 +7,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdvertisementController;
+use App\Http\Controllers\UserController;
 use App\Models\Category;
 use App\Models\NewsType;
 use App\Http\Resources\NewsTypeResource;
@@ -51,11 +52,18 @@ Route::prefix('Admin')->group(function(){
      * 
      */
     Route::resource('news', NewsController::class);
+
     /**
      * Route for Advertisement
      * 
      */
     Route::resource('advertisement', AdvertisementController::class);
+
+    /**
+     * Route for User
+     * 
+     */
+    Route::resource('user', UserController::class);
 
 });
 

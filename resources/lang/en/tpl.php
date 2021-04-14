@@ -116,6 +116,33 @@ return [
     'advertisement.show.title' => 'Show Advertisement',
 
     /**
+     * Language for template User
+     */
+
+    'user.index.title' => 'List User',
+    'user.index.name' => 'User name',
+    'user.index.email' => 'Email',
+    'user.index.url_img' => 'URL Image',
+    'user.index.ngaysinh' => 'Date of birth',
+    'user.index.password' => 'Password',
+    'user.index.sex' => 'Sex',
+    'user.index.sex.male' => 'Male',
+    'user.index.sex.female' => 'Female',
+    'user.index.is_admin' => 'Is Admin',
+    'user.index.is_admin.admin' => 'Admin',
+    'user.index.is_admin.normaluser' => 'Normal User',
+
+    'user.edit.title' => 'Edit User',
+    'user.edit.name' => 'User name',
+    'user.edit.email' => 'Email',
+    'user.edit.url_img' => 'URL Image',
+    'user.edit.ngaysinh' => 'Date of birth',
+    'user.edit.sex' => 'Sex',
+    'user.edit.is_admin' => 'Is Admin',
+    
+    'user.show.title' => 'Show User',
+
+    /**
      * Language for error
      */
     'name.required' => 'The name field is required.',
@@ -141,6 +168,10 @@ return [
     'description.required' => 'The description field is required.',
     'description.min'=> 'The description must be at least 5 characters',
     'description.max'=> 'The description may not be greater than 5000 characters',
+
+    'password.required' => 'Wrong format!!!',
+    'email.max' => 'Wrong format!!!',
+    'url.max' => 'Wrong format!!!',
     
 
 ];

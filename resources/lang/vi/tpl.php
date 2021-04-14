@@ -114,6 +114,33 @@ return [
     'advertisement.show.title' => 'Hiển thị Quảng cáo',
 
     /**
+     * Language for template User
+     */
+
+    'user.index.title' => 'Danh sách Tài khoản',
+    'user.index.name' => 'Tên người dùng',
+    'user.index.email' => 'Email',
+    'user.index.url_img' => 'Đường dẫn hình ảnh',
+    'user.index.ngaysinh' => 'Ngày sinh',
+    'user.index.password' => 'Mật khẩu',
+    'user.index.sex' => 'Giới tính',
+    'user.index.sex.male' => 'Nam',
+    'user.index.sex.female' => 'Nữ',
+    'user.index.is_admin' => 'Phân quyền',
+    'user.index.is_admin.admin' => 'Quản trị viên',
+    'user.index.is_admin.normaluser' => 'Người dùng bình thường',
+
+    'user.edit.title' => 'Chỉnh sửa tài khoản',
+    'user.edit.name' => 'Tên tài khoản',
+    'user.edit.email' => 'Email',
+    'user.edit.url_img' => 'Đường dẫn hình ảnh',
+    'user.edit.ngaysinh' => 'Ngày sinh',
+    'user.edit.sex' => 'Giới tính',
+    'user.edit.is_admin' => 'Phân quyền',
+    
+    'user.show.title' => 'Hiển thị Tài khoản',
+
+    /**
      * Language for error
      */
     'name.required' => 'Bắt buộc phải nhập tên',
@@ -135,6 +162,13 @@ return [
     'noi_dung.required' => 'Bắt buộc phải nhập nội dung.',
     'noi_dung.min'=> 'Nội dung bài viết phải trên 5 ký tự',
     'noi_dung.max'=> 'Nội dung bài viết phải dưới 5000 ký tự',
+
+    'description.required' => 'Bắt buộc phải nhập mô tả.',
+    'description.min'=> 'Mô tả bài viết phải trên 5 ký tự',
+    'description.max'=> 'Mô tả bài viết phải dưới 5000 ký tự',
+
+    'email.max' => 'Sai Định dạng. Vui lòng nhập lại!!!',
+    'url.max' => 'Sai định dạng. Vui lòng nhập lại!!!',
     
 
 ];

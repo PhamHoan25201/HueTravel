@@ -100,10 +100,7 @@
                     </a>
                     <ul class="submenu ">
                         <li>
-                            <a href="list_user.php">List User</a>
-                        </li>
-                        <li>
-                            <a href="add_user.php">Add User</a>
+                            <a href="{{route('user.index')}}">List User</a>
                         </li>
                     </ul>
                 </li>
