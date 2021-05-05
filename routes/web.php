@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ImageController;
 use App\Models\Category;
 use App\Models\NewsType;
 use App\Http\Resources\NewsTypeResource;
@@ -65,6 +66,13 @@ Route::prefix('Admin')->group(function(){
      */
     Route::resource('user', UserController::class);
 
+    /**
+     * Route for NormalUser
+     * 
+     */
+    Route::get('/Test', function () {
+        return view('layouts/normalUser');
+    })->name('test');
 });
 
 Auth::routes();
@@ -72,3 +80,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+
+//Imagecontroller
+Route::get('image/index', [ImageController::class, 'index']);
+Route::post('image/upload', [ImageController::class,'upload']);
