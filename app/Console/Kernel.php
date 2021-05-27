@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Models\Category;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -25,6 +26,16 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+        $schedule->call(function () {
+            // DB::table('category')->insert([
+            //     'name' => 'Đây là category test', 
+            //     'status'=> 1
+            // ]);
+            Category::create([
+                'name' => 'Đây là category test', 
+                'status'=> 1
+            ]);
+        })->everyMinute();;
     }
 
     /**

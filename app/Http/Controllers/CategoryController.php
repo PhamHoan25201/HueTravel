@@ -6,10 +6,20 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use \Illuminate\Support\Facades\Validator;
+use App\Repositories\Category\CategoryEloquentRepository;
 //use App\Models\NewsType;
 
 class CategoryController extends Controller
 {
+    //Laravel02
+    protected $CategoryRepository;
+
+    public function __construct(CategoryEloquentRepository $CategoryRepository){
+        $this->CategoryRepository = $CategoryRepository;
+    }
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +27,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $listCategory = Category::all();
+        //$listCategory = Category::all();
+        $listCategory = $this->CategoryRepository->getAll();
         return view('Category.index', array('listCategory' => $listCategory));
     }
 
