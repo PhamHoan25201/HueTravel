@@ -5,9 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
+use App\Repositories\User\UserEloquentRepository;
 
 class UserController extends Controller
 {
+    protected $userRepository;
+
+    public function __construct(UserEloquentRepository $userRepository){
+        $this->userRepository = $userRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +23,7 @@ class UserController extends Controller
     public function index()
     {
         //
-        $listUser = User::all();
+        $listUser = $this->userRepository->getAll();
         return view('user.index', array('listUser' => $listUser));
     }
 
@@ -40,7 +47,9 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         //
-        User::create($request->all());
+       // User::create($request->all());
+        $data = $request->all();
+        $this->userRepository->create($data);
         return redirect()->route('user.index');
     }
 
@@ -53,7 +62,7 @@ class UserController extends Controller
     public function show($id)
     {
         //
-        $user = User::find($id);
+        $user = $this->userRepository->find($id);
         return view('user.show', array('user' => $user));
     }
 
@@ -66,7 +75,7 @@ class UserController extends Controller
     public function edit($id)
     {
         //
-        $user = User::find($id);
+        $user = $this->userRepository->find($id);
         return view('user.edit', array('user' => $user));
     }
 
@@ -80,8 +89,10 @@ class UserController extends Controller
     public function update(UserRequest $request, $id)
     {
         //
-        $user = User::find($id);
-        $user->update($request->all());
+        //$user = User::find($id);
+        //$user->update($request->all());
+        $data = $request->all();
+        $user = $this->userRepository->update($id, $data);
         return redirect()->route('user.index');
     }
 
@@ -94,7 +105,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-        User::destroy($id);
+        $this->userRepository->delete($id);
         return redirect()->route('user.index');
     }
 }

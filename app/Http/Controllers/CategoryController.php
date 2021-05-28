@@ -50,8 +50,11 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        Category::create($request->all());
+        //Category::create($request->all());
+        $data = $request->all();
+        $category = $this->CategoryRepository->create($data);
         return redirect()->route('category.index');
+
     }
 
     /**
@@ -62,7 +65,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $category = Category::find($id);
+        $category = $this->CategoryRepository->find($id);
         // if($category == null){
         //     return redirect()->route('category.index')->with('message', 'Not found category');
         // }
@@ -77,7 +80,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::find($id);
+        //$category = Category::find($id);
+        $category = $this->CategoryRepository->find($id);
         return view('category.edit', array('category' => $category));
     }
 
@@ -90,8 +94,11 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request, $id)
     {
-        $category = Category::find($id);
-        $category->update($request->all());
+        //$category = Category::find($id);
+        //$category->update($request->all());
+
+        $data = $request->all();
+        $category = $this->CategoryRepository->update($id, $data);
         return redirect()->route('category.index');
     }
 
@@ -103,7 +110,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        Category::destroy($id);
+        //Category::destroy($id);
+        $this->CategoryRepository->delete($id);
         return redirect()->route('category.index');
     }
 }

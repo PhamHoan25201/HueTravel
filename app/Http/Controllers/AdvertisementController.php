@@ -6,9 +6,15 @@ use Illuminate\Http\Request;
 use App\Models\Advertisement;
 use App\Http\Requests\AdvertisementRequest;
 use \Illuminate\Support\Facades\Validator;
+use App\Repositories\Advertisement\AdvertisementEloquentRepository;
 
 class AdvertisementController extends Controller
 {
+    protected $advertisementRepository;
+
+    public function __construct(AdvertisementEloquentRepository $advertisementRepository){
+        $this->advertisementRepository = $advertisementRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +23,8 @@ class AdvertisementController extends Controller
     public function index()
     {
         //
-        $listAdvertisement = Advertisement::all();
+        //$listAdvertisement = Advertisement::all();
+        $listAdvertisement = $this->advertisementRepository->getAll();
         return view('advertisement.index', array('listAdvertisement' => $listAdvertisement));
     }
 
@@ -41,7 +48,9 @@ class AdvertisementController extends Controller
     public function store(AdvertisementRequest $request)
     {
         //
-        Advertisement::create($request->all());
+        //Advertisement::create($request->all());
+        $data = $request->all();
+        $this->advertisementRepository->create($data);
         return redirect()->route('advertisement.index');
     }
 
@@ -54,7 +63,8 @@ class AdvertisementController extends Controller
     public function show($id)
     {
         //
-        $advertisement = Advertisement::find($id);
+        //$advertisement = Advertisement::find($id);
+        $advertisement = $this->advertisementRepository->find($id);
         return view('advertisement.show', array('advertisement' => $advertisement));
     }
 
@@ -67,7 +77,8 @@ class AdvertisementController extends Controller
     public function edit($id)
     {
         //
-        $advertisement = Advertisement::find($id);
+       // $advertisement = Advertisement::find($id);
+       $advertisement = $this->advertisementRepository->find($id);
         return view('advertisement.edit', array('advertisement' => $advertisement));
     }
 
@@ -81,8 +92,12 @@ class AdvertisementController extends Controller
     public function update(AdvertisementRequest $request, $id)
     {
         //
-        $advertisement = Advertisement::find($id);
-        $advertisement->update($request->all());
+        //$advertisement = Advertisement::find($id);
+        //$advertisement->update($request->all());
+
+        
+        $data = $request->all();
+        $this->advertisementRepository->update($id, $data);
         return redirect()->route('advertisement.index');
     }
 
@@ -95,7 +110,8 @@ class AdvertisementController extends Controller
     public function destroy($id)
     {
         //
-        Advertisement::destroy($id);
+        //Advertisement::destroy($id);
+        $this->advertisementRepository->delete($id);
         return redirect()->route('advertisement.index');
     }
 }
