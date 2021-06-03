@@ -12,10 +12,10 @@ use App\Repositories\Category\CategoryEloquentRepository;
 class CategoryController extends Controller
 {
     //Laravel02
-    protected $CategoryRepository;
+    protected $catRepo;
 
-    public function __construct(CategoryEloquentRepository $CategoryRepository){
-        $this->CategoryRepository = $CategoryRepository;
+    public function __construct(CategoryEloquentRepository $catRepo){
+        $this->catRepo = $catRepo;
     }
 
 
@@ -28,7 +28,7 @@ class CategoryController extends Controller
     public function index()
     {
         //$listCategory = Category::all();
-        $listCategory = $this->CategoryRepository->getAll();
+        $listCategory = $this->catRepo->getAll();
         return view('Category.index', array('listCategory' => $listCategory));
     }
 
@@ -51,9 +51,10 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         //Category::create($request->all());
-        $data = $request->all();
-        $category = $this->CategoryRepository->create($data);
+        $category = $this->catRepo->create($request->only());//Dùng hàm Array__Mergr
+        //Dùng flash Mes Laravel để lấy thông báo ra, Xử lý Exception - tạo tình huống..., Tìm hiểu Transaction
         return redirect()->route('category.index');
+        
 
     }
 
@@ -65,7 +66,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $category = $this->CategoryRepository->find($id);
+        $category = $this->catRepo->find($id);
         // if($category == null){
         //     return redirect()->route('category.index')->with('message', 'Not found category');
         // }
@@ -81,7 +82,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         //$category = Category::find($id);
-        $category = $this->CategoryRepository->find($id);
+        $category = $this->catRepo->find($id);
         return view('category.edit', array('category' => $category));
     }
 
@@ -97,8 +98,7 @@ class CategoryController extends Controller
         //$category = Category::find($id);
         //$category->update($request->all());
 
-        $data = $request->all();
-        $category = $this->CategoryRepository->update($id, $data);
+        $this->catRepo->update($id, $request->all());
         return redirect()->route('category.index');
     }
 
@@ -111,7 +111,7 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //Category::destroy($id);
-        $this->CategoryRepository->delete($id);
+        $this->catRepo->delete($id);
         return redirect()->route('category.index');
     }
 }

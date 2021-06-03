@@ -31,7 +31,7 @@ Route::get('/', function () {
 
 //Route::get('Adminn','App\Http\Controllers\LoginController@index')->name('login');
 
-Route::prefix('Admin')->group(function(){
+Route::prefix('admin')->group(function(){
     
     /**
      * Route for The Loai
@@ -70,11 +70,14 @@ Route::prefix('Admin')->group(function(){
      * Route for NormalUser
      * 
      */
-    Route::get('/Test', function () {
-        return view('layouts/normalUser');
-    })->name('test');
+    
 });
+// Normal User
+Route::get('/Test', function () {
+    return view('layouts/normalUser');
+})->name('test');
 
+//Login
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

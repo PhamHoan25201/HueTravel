@@ -19,7 +19,7 @@
                   </thead>               
                @foreach($listNewsType as $newstype)
                 <tr>
-                  <th>{{ $n++ }}</th>
+                  <th>{{ increment() }}</th>
                   <td><a href="{{ route('newstype.show', $newstype->id) }}">{{ $newstype->name }}</a></td>
                   <td><a href="{{ route('newstype.show',$newstype->category->id) }}">{{ $newstype->category->name }}</a></td>
                   <td>{{ $newstype->status }}</td>

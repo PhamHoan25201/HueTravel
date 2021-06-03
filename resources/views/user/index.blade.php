@@ -24,7 +24,7 @@
 
                @foreach($listUser as $user)
                 <tr>
-                  <th>{{ $n++ }}</th>
+                  <th>{{ increment() }}</th>
                   <td><a href="{{ route('user.show', $user->id) }}">{{ $user->name }}</a></td>
                   <td><a href="{{ route('user.show', $user->id) }}">{{ $user->email }}</a></td>
                   <td><a href="{{ route('user.show', $user->id) }}">{{ $user->url_img }}</a></td>

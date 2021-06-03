@@ -23,7 +23,7 @@
 
                @foreach($listAdvertisement as $advertisement)
                 <tr>
-                  <th>{{ $n++ }}</th>
+                  <th>{{ increment() }}</th>
                   <td><a href="{{ route('advertisement.show', $advertisement->id) }}">{{ $advertisement->url_img1 }}</a></td>
                   <td><a href="{{ route('advertisement.show', $advertisement->id) }}">{{ $advertisement->url_img2 }}</a></td>
                   <td><a href="{{ route('advertisement.show', $advertisement->id) }}">{{ $advertisement->start_date }}</a></td>
