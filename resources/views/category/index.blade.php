@@ -1,6 +1,6 @@
+
 @extends('layouts.admin')
 
-{{$n = 1}} 
 @section('content')
 <div class="page-title">
   <h3>{{ trans('tpl.category.index.title') }}</h3>
@@ -16,10 +16,11 @@
                           <th>{{ trans('tpl.category.index.status') }}</th>
                       </tr>
                   </thead>
-
+                  {{$i = 0}} 
                @foreach($listCategory as $category)
                 <tr>
-                  <th>{{ $n++ }}</th>
+
+                  <th>{{ increment() }}</th>
                   <td><a href="{{ route('category.show', $category->id) }}">{{ $category->name }}</a></td>
                   <td>{{ $category->status }}</td>
                   
