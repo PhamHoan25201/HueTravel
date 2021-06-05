@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - News by Hoàn không G</title>
     
-    <link rel="stylesheet" href="{{asset('/Admin/assets/css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{asset('/Admin/assets/css/Validation.css')}}">
+    <link rel="stylesheet" href="{{asset('/AdminUser/assets/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('/AdminUser/assets/css/Validation.css')}}">
     
-<link rel="stylesheet" href="{{asset('/Admin/assets/vendors/simple-datatables/style.css')}}">
+<link rel="stylesheet" href="{{asset('/AdminUser/assets/vendors/simple-datatables/style.css')}}">
 
-    <link rel="stylesheet" href="{{asset('/Admin/assets/vendors/perfect-scrollbar/perfect-scrollbar.css')}}">
-    <link rel="stylesheet" href="{{asset('/Admin/assets/css/app.css')}}">
-    <link rel="shortcut icon" href="{{asset('/Admin/assets/images/favicon.svg" type="image/x-icon')}}">
+    <link rel="stylesheet" href="{{asset('/AdminUser/assets/vendors/perfect-scrollbar/perfect-scrollbar.css')}}">
+    <link rel="stylesheet" href="{{asset('/AdminUser/assets/css/app.css')}}">
+    <link rel="shortcut icon" href="{{asset('/AdminUser/assets/images/favicon.svg" type="image/x-icon')}}">
 </head>
 <body>
     <div id="app">
         <div id="sidebar" class='active'>
             <div class="sidebar-wrapper active">
     <div class="sidebar-header">
-        <img src="{{asset('/Admin/assets/images/logo.svg')}}" alt="" srcset="">
+        <img src="{{asset('/AdminUser/assets/images/logo.svg')}}" alt="" srcset="">
     </div>
     <div class="sidebar-menu">
         <ul class="menu">
@@ -220,19 +220,37 @@
                             </div>
                         </li>
                         <li class="dropdown">
-                            <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                                <div class="avatar mr-1">
-                                    <img src="{{asset('/Admin/assets/images/avatar/avatar-s-1.png')}}" alt="" srcset="">
-                                </div>
-                                <div class="d-none d-md-block d-lg-inline-block">Phạm Văn Hoàn</div>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#"><i data-feather="user"></i> Account</a>
-                                <a class="dropdown-item active" href="#"><i data-feather="mail"></i> Messages</a>
-                                <a class="dropdown-item" href="#"><i data-feather="settings"></i> Settings</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="logout.php"><i data-feather="log-out"></i> Logout</a>
-                            </div>
+                            @guest
+                                @if (Route::has('login')||Route::has('register') )
+                                    <a href="{{ route('login') }}" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                                        <div class="d-none d-md-block d-lg-inline-block">{{ __('Login') }}</div>
+                                    </a>
+                                @endif
+                            @else
+                                    <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                                        <div class="avatar mr-1">
+                                            <img src="{{asset('/AdminUser/assets/images/avatar/avatar-s-1.png')}}" alt="" srcset="">
+                                        </div>
+                                        <div class="d-none d-md-block d-lg-inline-block">{{ Auth::user()->name }}</div>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="{{ route('home') }}"><i data-feather="user"></i> Login Normal User</a>
+                                        <a class="dropdown-item active" href="#"><i data-feather="mail"></i> Messages</a>
+                                        <a class="dropdown-item" href="#"><i data-feather="settings"></i> Settings</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="{{ route('logout') }}" 
+                                            onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();"><i data-feather="log-out"></i> 
+                                            {{ __('Logout') }}
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            {{csrf_field()}}
+                                        </form>
+                                    </div>
+                               
+                            @endguest
+                            
+                            
                         </li>
                     </ul>
                 </div>
@@ -258,17 +276,17 @@
     </footer>
 </div>
 </div>
-<script src="{{asset('/Admin/assets/js/feather-icons/feather.min.js')}}"></script>
-<script src="{{asset('/Admin/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
-<script src="{{asset('/Admin/assets/js/app.js')}}"></script>
+<script src="{{asset('/AdminUser/assets/js/feather-icons/feather.min.js')}}"></script>
+<script src="{{asset('/AdminUser/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+<script src="{{asset('/AdminUser/assets/js/app.js')}}"></script>
 
-<script src="{{asset('/Admin/assets/vendors/chartjs/Chart.min.js')}}"></script>
-<script src="{{asset('/Admin/assets/vendors/simple-datatables/simple-datatables.js')}}"></script>
-<script src="{{asset('/Admin/assets/vendors/apexcharts/apexcharts.min.js')}}"></script>
-<script src="{{asset('/Admin/assets/js/pages/dashboard.js')}}"></script>
-<script src="{{asset('/Admin/assets/js/vendors.js')}}"></script>
+<script src="{{asset('/AdminUser/assets/vendors/chartjs/Chart.min.js')}}"></script>
+<script src="{{asset('/AdminUser/assets/vendors/simple-datatables/simple-datatables.js')}}"></script>
+<script src="{{asset('/AdminUser/assets/vendors/apexcharts/apexcharts.min.js')}}"></script>
+<script src="{{asset('/AdminUser/assets/js/pages/dashboard.js')}}"></script>
+<script src="{{asset('/AdminUser/assets/js/vendors.js')}}"></script>
 
-<script src="{{asset('/Admin/assets/js/main.js')}}"></script>
+<script src="{{asset('/AdminUser/assets/js/main.js')}}"></script>
 </body>
 </html>
 

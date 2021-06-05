@@ -1,3 +1,5 @@
+
+
 /*
  * Import Fonts
  *
@@ -230,7 +232,7 @@
  */
 /* Colors */
 body {
-  font-family: 'Lato', sans-serif;
+  /* font-family: 'Lato', sans-serif; */
   font-weight: 300;
   color: #191E21;
   font-size: 1.4em;
@@ -238,8 +240,8 @@ body {
 
 h1, h2, h3, h4, h5, h6,
 .line div {
-  font-weight: 800;
-  font-family: 'Raleway';
+  font-weight: bold;
+  
   color: #000;
   margin: 10px 0;
 }
@@ -1972,7 +1974,7 @@ article footer .btn-primary:focus {
 .menu ul > li .dropdown-menu.megamenu .megamenu-title {
   font-size: 16px;
   position: relative;
-  font-weight: 800;
+ 
   margin: 0;
   text-transform: uppercase;
   margin-bottom: 15px;
@@ -2400,7 +2402,7 @@ aside:last-child {
 aside .aside-title {
   font-size: 16px;
   position: relative;
-  font-weight: 800;
+  font-weight: bold;
   margin: 0;
   text-transform: uppercase;
   margin-bottom: 30px;
@@ -4133,3 +4135,63 @@ blockquote {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+#Account li b {
+  padding-left: 9px;
+  
+}
+#Account li b:hover {
+  padding-left: 9px;
+  color: #F73F52 ;
+  
+}
+/* back to top */
+a.cd-top {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  /* image replacement properties */
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  background: #3097D1 url("https://thinhweb.com/wp-content/themes/thinhweb/images/cd-top-arrow.svg") no-repeat center 50%;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity .3s 0s, visibility 0s .3s;
+  -moz-transition: opacity .3s 0s, visibility 0s .3s;
+  transition: opacity .3s 0s, visibility 0s .3s;
+}
+
+a.cd-top.cd-is-visible,
+a.cd-top.cd-fade-out,
+.no-touch a.cd-top:hover {
+  -webkit-transition: opacity .3s 0s, visibility 0s 0s;
+  -moz-transition: opacity .3s 0s, visibility 0s 0s;
+  transition: opacity .3s 0s, visibility 0s 0s;
+}
+
+a.cd-top,
+a.cd-top:visited,
+a.cd-top:hover {
+  color: #CCCCCC;
+  text-decoration: none;
+}
+
+a.cd-top.cd-is-visible {
+  /* the button becomes visible */
+  visibility: visible;
+  opacity: 1;
+}
+
+a.cd-top.cd-fade-out {
+  /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+  opacity: 1;
+}ssss
+
+
+
+ 

@@ -172,6 +172,13 @@ return [
     'password.required' => 'Wrong format!!!',
     'email.max' => 'Wrong format!!!',
     'url.max' => 'Wrong format!!!',
+
+    /**
+     * Language for Login and Register
+     */
+    'admin.error' => "You don't have admin access.",
+    'auth.failed' => "These credentials do not match our records.",
+    'auth.password' => "The provided password is incorrect.",
     
 
 ];

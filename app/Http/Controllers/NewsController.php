@@ -23,6 +23,7 @@ class NewsController extends Controller
         $this->newsTypeRepository = $newsTypeRepository;
         $this->userRepository = $userRepository;
         $this->newsRepository = $newsRepository;
+        $this->middleware('auth');
 
     }
     /**

@@ -170,5 +170,11 @@ return [
     'email.max' => 'Sai Định dạng. Vui lòng nhập lại!!!',
     'url.max' => 'Sai định dạng. Vui lòng nhập lại!!!',
     
+    /**
+     * Language for Login and Register
+     */
+    'admin.error' => "Bạn không có quyền truy cập vào trang Quản trị viên",
+    'auth.failed' => "Tài khoản hoặc Mật khẩu không đúng",
+    'auth.password' => "Mật khẩu không đúng",
 
 ];
