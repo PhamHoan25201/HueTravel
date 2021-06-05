@@ -16,6 +16,7 @@ class CategoryController extends Controller
 
     public function __construct(CategoryEloquentRepository $catRepo){
         $this->catRepo = $catRepo;
+        $this->middleware('auth');
     }
 
 

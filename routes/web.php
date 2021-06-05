@@ -32,6 +32,8 @@ Route::get('/', function () {
 //Route::get('Adminn','App\Http\Controllers\LoginController@index')->name('login');
 
 Route::prefix('admin')->group(function(){
+
+    Route::get('/', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
     
     /**
      * Route for The Loai
@@ -66,23 +68,22 @@ Route::prefix('admin')->group(function(){
      */
     Route::resource('user', UserController::class);
 
-    /**
-     * Route for NormalUser
-     * 
-     */
+    
     
 });
-// Normal User
+/**
+     * Route for NormalUser
+     * 
+*/
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+//Route test
 Route::get('/Test', function () {
-    return view('layouts/normalUser');
-})->name('test');
+    return view('normalUser/index');
+});
 
 //Login
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 
 //Imagecontroller
 Route::get('image/index', [ImageController::class, 'index']);

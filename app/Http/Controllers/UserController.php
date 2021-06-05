@@ -13,6 +13,7 @@ class UserController extends Controller
 
     public function __construct(UserEloquentRepository $userRepository){
         $this->userRepository = $userRepository;
+        $this->middleware('auth');
     }
 
     /**

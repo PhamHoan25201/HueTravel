@@ -20,6 +20,7 @@ class NewsTypeController extends Controller
     public function __construct(NewsTypeEloquentRepository $newsTypeRepository, CategoryEloquentRepository $categoryRepository){
         $this->newsTypeRepository = $newsTypeRepository;
         $this->categoryRepository = $categoryRepository;
+        $this->middleware('auth');
     }
 
 

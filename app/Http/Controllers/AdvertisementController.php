@@ -14,6 +14,7 @@ class AdvertisementController extends Controller
 
     public function __construct(AdvertisementEloquentRepository $advertisementRepository){
         $this->advertisementRepository = $advertisementRepository;
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
