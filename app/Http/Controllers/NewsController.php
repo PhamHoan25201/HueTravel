@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\NewsRequest;
 use App\Models\NewsType;
 use App\Models\News;
@@ -33,12 +34,8 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
-        //$listNews = UserResource::collection(News::all());
-        //$listNews = NewsResource::collection(News::all());
        $listNews = NewsResource::collection($this->newsRepository->getAll());
-
-        return view('news.index', array('listNews' => $listNews));
+          return view('news.index', array('listNews' => $listNews));
     }
 
     /**
@@ -48,9 +45,6 @@ class NewsController extends Controller
      */
     public function create()
     {
-        //
-        //$listNewsType = NewsType::all();
-        //$listUser = User::all();
         $listNewsType = $this->newsTypeRepository->getAll();
         $listUser = $this->userRepository->getAll();
         return view('news.create', array('listNewsType' => $listNewsType, 'listUser' => $listUser ));
@@ -64,11 +58,16 @@ class NewsController extends Controller
      */
     public function store(NewsRequest $request)
     {
-        //
-        //News::create($request->all());
-        $data = $request->all();
-        $this->newsRepository->create($data);
-        return redirect()->route('news.index');
+        
+        try {
+            DB::beginTransaction();
+            $data = $request->all();
+            $this->newsRepository->create($data);
+            DB::commit();
+            return redirect()->route('news.index');
+        } catch (\Exception $exception) {
+            return redirect()->route('news.index');
+        }
     }
 
     /**
@@ -79,14 +78,16 @@ class NewsController extends Controller
      */
     public function show($id)
     {
-        //
-        //$listNewsType = NewsType::all();
-        //$listUser = User::all();
-        //$news = News::find($id);
-        $listNewsType = $this->newsTypeRepository->getAll();
-        $listUser = $this->userRepository->getAll();
-        $news = $this->newsRepository->find($id);
-        return view('news.show', array('news' => $news, 'listNewsType' => $listNewsType, 'listUser' => $listUser));
+        try {
+            DB::beginTransaction();
+            $listNewsType = $this->newsTypeRepository->getAll();
+            $listUser = $this->userRepository->getAll();
+            $news = News::findOrFail($id);
+            DB::commit();
+            return view('news.show', array('news' => $news, 'listNewsType' => $listNewsType, 'listUser' => $listUser));
+        } catch (\Exception $exception) {
+            return redirect()->route('news.index');
+        }
     }
 
     /**
@@ -97,15 +98,16 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
-        //
-        
-        //$news = News::find($id);
-        //$listNewsType = NewsType::all();
-        //$listUser = User::all();
-        $news = $this->newsRepository->find($id);
-        $listNewsType = $this->newsTypeRepository->getAll();
-        $listUser = $this->userRepository->getAll();
-        return view('news.edit', array('news' => $news, 'listNewsType' => $listNewsType, 'listUser' => $listUser ));
+       try {
+            DB::beginTransaction();
+            $listNewsType = $this->newsTypeRepository->getAll();
+            $listUser = $this->userRepository->getAll();
+            $news = News::findOrFail($id);
+            DB::commit();
+            return view('news.edit', array('news' => $news, 'listNewsType' => $listNewsType, 'listUser' => $listUser ));
+        } catch (\Exception $exception) {
+            return redirect()->route('news.index');        
+        }
     }
 
     /**
@@ -117,12 +119,15 @@ class NewsController extends Controller
      */
     public function update(NewsRequest $request, $id)
     {
-        //
-        //$news = News::find($id);
-        //$news->update($request->all());
-        $data = $request->all();
-        $this->newsRepository->update($id, $data);
-        return redirect()->route('news.index');
+         try {
+            DB::beginTransaction();
+            $data = $request->all();
+            $this->newsRepository->update($id, $data);
+            DB::commit();
+            return redirect()->route('news.index');
+        } catch (\Exception $exception) {
+            return redirect()->route('news.index');
+        }
     }
 
     /**
@@ -133,9 +138,13 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        //
-        //News::destroy($id);
-        $this->newsRepository->delete($id);
-        return redirect()->route('news.index');
+        try {
+            DB::beginTransaction();
+            $this->newsRepository->delete($id);
+            DB::commit();
+            return redirect()->route('news.index');
+        } catch (\Exception $exception) {
+            return redirect()->route('news.index');
+        }
     }
 }

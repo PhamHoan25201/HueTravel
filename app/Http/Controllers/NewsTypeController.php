@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\NewsTypeRequest;
 use App\Models\NewsType;
 use App\Models\Category;
@@ -31,8 +32,6 @@ class NewsTypeController extends Controller
      */
     public function index()
     {
-        //
-        //$listNewsType = NewsTypeResource::collection(NewsType::all());
         $listNewsType = NewsTypeResource::collection($this->newsTypeRepository->getAll());
         return view('newstype.index', array('listNewsType' => $listNewsType));
     }
@@ -57,11 +56,15 @@ class NewsTypeController extends Controller
      */
     public function store(NewsTypeRequest $request)
     {
-        //
-        //NewsType::create($request->all());
-        $data = $request->all();
-        $newstype = $this->newsTypeRepository->create($data);
-        return redirect()->route('newstype.index');
+        try {
+            DB::beginTransaction();
+            $data = $request->all();
+            $newstype = $this->newsTypeRepository->create($data);
+            DB::commit();
+            return redirect()->route('newstype.index');
+        } catch (\Exception $exception) {
+            return redirect()->route('newstype.index');
+        }
     }
 
     /**
@@ -72,11 +75,16 @@ class NewsTypeController extends Controller
      */
     public function show($id)
     {
-        //
-        //$listCategory = Category::all();
-        $listCategory = $this->categoryRepository->getAll();
-        $newstype = $this->newsTypeRepository->find($id);
-        return view('newstype.show', array('newstype' => $newstype), array('listCategory' => $listCategory));
+        
+        try {
+            DB::beginTransaction();
+            $listCategory = $this->categoryRepository->getAll();
+            $newstype = NewsType::findOrFail($id);
+            DB::commit();
+            return view('newstype.show', array('newstype' => $newstype), array('listCategory' => $listCategory));
+        } catch (\Exception $exception) {
+            return redirect()->route('newstype.index');
+        }
     }
 
     /**
@@ -87,12 +95,15 @@ class NewsTypeController extends Controller
      */
     public function edit($id)
     {
-        //
-        //$listCategory = Category::all();
-        //$newstype = NewsType::find($id);
-        $listCategory = $this->categoryRepository->getAll();
-        $newstype = $this->newsTypeRepository->find($id);
-        return view('newstype.edit', array('newstype' => $newstype), array('listCategory' => $listCategory));
+        try {
+            DB::beginTransaction();
+            $listCategory = $this->categoryRepository->getAll();
+            $newstype = NewsType::findOrFail($id);
+            DB::commit();
+            return view('newstype.show', array('newstype' => $newstype), array('listCategory' => $listCategory));
+        } catch (\Exception $exception) {
+            return redirect()->route('newstype.index');        
+        }
     }
 
     /**
@@ -104,13 +115,15 @@ class NewsTypeController extends Controller
      */
     public function update(NewsTypeRequest $request, $id)
     {
-        //
-        //$newstype = NewsType::find($id);
-        //$newstype->update($request->all());
-       
-        $data = $request->all();
-        $this->newsTypeRepository->update($id, $data);
-        return redirect()->route('newstype.index');
+        try {
+            DB::beginTransaction();
+            $data = $request->all();
+            $this->newsTypeRepository->update($id, $data);
+            DB::commit();
+            return redirect()->route('newstype.index');
+        } catch (\Exception $exception) {
+            return redirect()->route('newstype.index');        
+        }
     }
 
     /**
@@ -121,9 +134,13 @@ class NewsTypeController extends Controller
      */
     public function destroy($id)
     {
-        //
-        //NewsType::destroy($id);
-        $this->newsTypeRepository->delete($id);
-        return redirect()->route('newstype.index');
+        try {
+            DB::beginTransaction();
+            $this->newsTypeRepository->delete($id);
+            DB::commit();
+            return redirect()->route('newstype.index');
+        } catch (\Exception $exception) {
+            return redirect()->route('newstype.index');
+        }
     }
 }

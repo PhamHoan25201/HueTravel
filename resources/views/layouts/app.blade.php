@@ -28,10 +28,12 @@
 	</head>
 
 	<body class="skin-orange">
+		
 		<header class="primary">
 
 			<!-- First Bar -->
 			<div class="firstbar">
+				@include('flash-message');
 				<div class="container">
 					<div class="row">
 						<div class="col-md-3 col-sm-12">

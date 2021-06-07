@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Repositories\User\UserEloquentRepository;
@@ -47,11 +48,15 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        //
-       // User::create($request->all());
-        $data = $request->all();
+       try {
+            DB::beginTransaction();
+            $data = $request->all();
         $this->userRepository->create($data);
-        return redirect()->route('user.index');
+            DB::commit();
+            return redirect()->route('user.index');
+        } catch (\Exception $exception) {
+            return redirect()->route('user.index');
+        }
     }
 
     /**
@@ -62,9 +67,13 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
-        $user = $this->userRepository->find($id);
-        return view('user.show', array('user' => $user));
+        try {
+            DB::beginTransaction();
+            $user = User::findOrFail($id);
+            return view('user.show', array('user' => $user));
+        } catch (\Exception $exception){
+            return redirect()->route('user.index');
+        }
     }
 
     /**
@@ -75,9 +84,13 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
-        $user = $this->userRepository->find($id);
-        return view('user.edit', array('user' => $user));
+        try {
+            DB::beginTransaction();
+            $user = User::findOrFail($id);
+            return view('user.edit', array('user' => $user));
+        } catch (\Exception $exception){
+            return redirect()->route('user.index');
+        }
     }
 
     /**
@@ -89,12 +102,16 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, $id)
     {
-        //
-        //$user = User::find($id);
-        //$user->update($request->all());
-        $data = $request->all();
-        $user = $this->userRepository->update($id, $data);
-        return redirect()->route('user.index');
+        
+        try {
+            DB::beginTransaction();
+            $data = $request->all();
+            $user = $this->userRepository->update($id, $data);
+            DB::commit();
+            return redirect()->route('user.index');
+        } catch (\Exception $exception) {
+            return redirect()->route('user.index');
+        }
     }
 
     /**
@@ -105,8 +122,13 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
-        $this->userRepository->delete($id);
-        return redirect()->route('user.index');
+          try {
+            DB::beginTransaction();
+            $this->userRepository->delete($id);
+            DB::commit();
+            return redirect()->route('user.index');
+        } catch (\Exception $exception) {
+            return redirect()->route('user.index');
+        }
     }
 }
