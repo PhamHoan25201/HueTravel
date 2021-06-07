@@ -22,7 +22,7 @@ class Category extends Model
     //Eloquent Event Using Closures
     protected static function booted(){
         static::creating(function($category){
-            $category->name = strtoupper($category->name);
+            $category->name = ucwords($category->name);
         });
     }
 }

@@ -256,7 +256,7 @@
                 </div>
             </nav>
             {{-- Main --}}         
-            
+
             <div class="main-content container-fluid">
                 @yield('content')
             </div>

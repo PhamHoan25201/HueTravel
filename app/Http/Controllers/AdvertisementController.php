@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Advertisement;
 use App\Http\Requests\AdvertisementRequest;
 use \Illuminate\Support\Facades\Validator;
@@ -50,9 +51,17 @@ class AdvertisementController extends Controller
     {
         //
         //Advertisement::create($request->all());
-        $data = $request->all();
-        $this->advertisementRepository->create($data);
-        return redirect()->route('advertisement.index');
+        
+
+        try {
+            DB::beginTransaction();
+            $data = $request->all();
+            $this->advertisementRepository->create($data);
+            DB::commit();
+            return redirect()->route('advertisement.index');
+        } catch (\Exception $exception) {
+            return redirect()->route('advertisement.index');
+        }
     }
 
     /**
@@ -63,10 +72,15 @@ class AdvertisementController extends Controller
      */
     public function show($id)
     {
-        //
-        //$advertisement = Advertisement::find($id);
-        $advertisement = $this->advertisementRepository->find($id);
-        return view('advertisement.show', array('advertisement' => $advertisement));
+       
+        try {
+            DB::beginTransaction();
+            $advertisement = Advertisement::findOrFail($id);
+            DB::commit();
+            return view('advertisement.show', array('advertisement' => $advertisement));
+        } catch (\Exception $exception) {
+            return redirect()->route('advertisement.index');
+        }
     }
 
     /**
@@ -77,10 +91,15 @@ class AdvertisementController extends Controller
      */
     public function edit($id)
     {
-        //
-       // $advertisement = Advertisement::find($id);
-       $advertisement = $this->advertisementRepository->find($id);
-        return view('advertisement.edit', array('advertisement' => $advertisement));
+
+        try {
+            DB::beginTransaction();
+            $advertisement = Advertisement::findOrFail($id);
+            DB::commit();
+            return view('advertisement.edit', array('advertisement' => $advertisement));
+        } catch (\Exception $exception) {
+            return redirect()->route('advertisement.index');        
+        }
     }
 
     /**
@@ -92,14 +111,15 @@ class AdvertisementController extends Controller
      */
     public function update(AdvertisementRequest $request, $id)
     {
-        //
-        //$advertisement = Advertisement::find($id);
-        //$advertisement->update($request->all());
-
-        
-        $data = $request->all();
-        $this->advertisementRepository->update($id, $data);
-        return redirect()->route('advertisement.index');
+        try {
+            DB::beginTransaction();
+            $data = $request->all();
+            $this->advertisementRepository->update($id, $data);
+            DB::commit();
+            return redirect()->route('advertisement.index');
+        } catch (\Exception $exception) {
+            return redirect()->route('advertisement.index');
+        }
     }
 
     /**
@@ -110,9 +130,13 @@ class AdvertisementController extends Controller
      */
     public function destroy($id)
     {
-        //
-        //Advertisement::destroy($id);
-        $this->advertisementRepository->delete($id);
-        return redirect()->route('advertisement.index');
+        try {
+            DB::beginTransaction();
+            $this->advertisementRepository->delete($id);
+            DB::commit();
+            return redirect()->route('advertisement.index');
+        } catch (\Exception $exception) {
+            return redirect()->route('advertisement.index');
+        }
     }
 }
