@@ -33,7 +33,7 @@
 
 			<!-- First Bar -->
 			<div class="firstbar">
-				@include('flash-message');
+				@include('flash_message');
 				<div class="container">
 					<div class="row">
 						<div class="col-md-3 col-sm-12">

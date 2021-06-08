@@ -63,9 +63,9 @@ class CategoryController extends Controller
             $data = $request->all();
             $category = $this->catRepo->create($data);
             DB::commit();
-            return redirect()->route('category.index');
+            return redirect()->route('category.index')->with("success",trans('tpl.admin.add.success'));
         } catch (\Exception $exception) {
-            return redirect()->route('category.index');
+            return redirect()->route('category.index')->with("error",trans('tpl.admin.add.fail'));
         }
         
         
@@ -84,7 +84,7 @@ class CategoryController extends Controller
             $category = Category::findOrFail($id);
             return view('category.show', array('category' => $category));
         } catch (\Exception $exception){
-            return redirect()->route('category.index');
+            return redirect()->route('category.index')->with("error",trans('tpl.admin.notFound')); 
         }
     }
 
@@ -101,7 +101,7 @@ class CategoryController extends Controller
             $category = Category::findOrFail($id);
             return view('category.edit', array('category' => $category));
         } catch (\Exception $exception){
-            return redirect()->route('category.index');
+            return redirect()->route('category.index')->with("error",trans('tpl.admin.notFound'));
         }
         
     }
@@ -119,7 +119,7 @@ class CategoryController extends Controller
             DB::beginTransaction();
             $this->catRepo->update($id, $request->all());
             DB::commit();
-            return redirect()->route('category.index');
+            return redirect()->route('category.index')->with("success",trans('tpl.admin.update.success'));
         } catch (\Exception $exception) {
             return redirect()->route('category.index');
         }
@@ -138,7 +138,7 @@ class CategoryController extends Controller
             DB::beginTransaction();
             $this->catRepo->delete($id);
             DB::commit();
-            return redirect()->route('category.index');
+            return redirect()->route('category.index')->with("success",trans('tpl.admin.delete.success'));
         } catch (\Exception $exception) {
             return redirect()->route('category.index');
         }
