@@ -61,9 +61,9 @@ class NewsTypeController extends Controller
             $data = $request->all();
             $newstype = $this->newsTypeRepository->create($data);
             DB::commit();
-            return redirect()->route('newstype.index');
+            return redirect()->route('newstype.index')->with("success",trans('tpl.admin.add.success'));
         } catch (\Exception $exception) {
-            return redirect()->route('newstype.index');
+            return redirect()->route('newstype.index')->with("error",trans('tpl.admin.add.fail'));
         }
     }
 
@@ -83,7 +83,7 @@ class NewsTypeController extends Controller
             DB::commit();
             return view('newstype.show', array('newstype' => $newstype), array('listCategory' => $listCategory));
         } catch (\Exception $exception) {
-            return redirect()->route('newstype.index');
+            return redirect()->route('newstype.index')->with("error",trans('tpl.admin.notFound'));
         }
     }
 
@@ -100,9 +100,9 @@ class NewsTypeController extends Controller
             $listCategory = $this->categoryRepository->getAll();
             $newstype = NewsType::findOrFail($id);
             DB::commit();
-            return view('newstype.show', array('newstype' => $newstype), array('listCategory' => $listCategory));
+            return view('newstype.edit', array('newstype' => $newstype), array('listCategory' => $listCategory));
         } catch (\Exception $exception) {
-            return redirect()->route('newstype.index');        
+            return redirect()->route('newstype.index')->with("error",trans('tpl.admin.notFound'));        
         }
     }
 
@@ -120,9 +120,9 @@ class NewsTypeController extends Controller
             $data = $request->all();
             $this->newsTypeRepository->update($id, $data);
             DB::commit();
-            return redirect()->route('newstype.index');
+            return redirect()->route('newstype.index')->with("success",trans('tpl.admin.update.success'));
         } catch (\Exception $exception) {
-            return redirect()->route('newstype.index');        
+            return redirect()->route('newstype.index')->with("error",trans('tpl.admin.update.fail'));        
         }
     }
 
@@ -138,9 +138,9 @@ class NewsTypeController extends Controller
             DB::beginTransaction();
             $this->newsTypeRepository->delete($id);
             DB::commit();
-            return redirect()->route('newstype.index');
+            return redirect()->route('newstype.index')->with("success",trans('tpl.admin.delete.success'));
         } catch (\Exception $exception) {
-            return redirect()->route('newstype.index');
+            return redirect()->route('newstype.index')->with("error",trans('tpl.admin.delete.fail'));
         }
     }
 }

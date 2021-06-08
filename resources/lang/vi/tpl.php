@@ -177,4 +177,17 @@ return [
     'auth.failed' => "Tài khoản hoặc Mật khẩu không đúng",
     'auth.password' => "Mật khẩu không đúng",
 
+    /**
+     * Language for add, delete and update
+     */
+    'admin.add.success' => "Thêm thành công!!!",
+    'admin.update.success' => "Cập nhật thành công!!!",
+    'admin.delete.success' => "Xóa thành công!!!",
+
+    'admin.add.fail' => "Thêm thất bại!!!",
+    'admin.update.fail' => "Cập nhật thất bại!!!",
+    'admin.delete.fail' => "Xóa thất bại!!!",
+
+    'admin.notFound' => "Không thể tìm thấy trang!!!",
+
 ];

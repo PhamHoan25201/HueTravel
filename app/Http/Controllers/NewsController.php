@@ -64,9 +64,9 @@ class NewsController extends Controller
             $data = $request->all();
             $this->newsRepository->create($data);
             DB::commit();
-            return redirect()->route('news.index');
+            return redirect()->route('news.index')->with("success",trans('tpl.admin.add.success'));
         } catch (\Exception $exception) {
-            return redirect()->route('news.index');
+            return redirect()->route('news.index')->with("error",trans('tpl.admin.add.fail'));
         }
     }
 
@@ -86,7 +86,7 @@ class NewsController extends Controller
             DB::commit();
             return view('news.show', array('news' => $news, 'listNewsType' => $listNewsType, 'listUser' => $listUser));
         } catch (\Exception $exception) {
-            return redirect()->route('news.index');
+            return redirect()->route('news.index')->with("error",trans('tpl.admin.notFound'));
         }
     }
 
@@ -106,7 +106,7 @@ class NewsController extends Controller
             DB::commit();
             return view('news.edit', array('news' => $news, 'listNewsType' => $listNewsType, 'listUser' => $listUser ));
         } catch (\Exception $exception) {
-            return redirect()->route('news.index');        
+            return redirect()->route('news.index')->with("error",trans('tpl.admin.notFound'));        
         }
     }
 
@@ -124,9 +124,9 @@ class NewsController extends Controller
             $data = $request->all();
             $this->newsRepository->update($id, $data);
             DB::commit();
-            return redirect()->route('news.index');
+            return redirect()->route('news.index')->with("success",trans('tpl.admin.update.success'));
         } catch (\Exception $exception) {
-            return redirect()->route('news.index');
+            return redirect()->route('news.index')->with("error",trans('tpl.admin.update.fail'));
         }
     }
 
@@ -142,9 +142,9 @@ class NewsController extends Controller
             DB::beginTransaction();
             $this->newsRepository->delete($id);
             DB::commit();
-            return redirect()->route('news.index');
+            return redirect()->route('news.index')->with("success",trans('tpl.admin.delete.success'));
         } catch (\Exception $exception) {
-            return redirect()->route('news.index');
+            return redirect()->route('news.index')->with("error",trans('tpl.admin.delete.fail'));
         }
     }
 }

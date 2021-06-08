@@ -179,6 +179,18 @@ return [
     'admin.error' => "You don't have admin access.",
     'auth.failed' => "These credentials do not match our records.",
     'auth.password' => "The provided password is incorrect.",
-    
 
+    /**
+     * Language for add, delete and update
+     */
+    'admin.add.success' => "Add successfully!!!",
+    'admin.update.success' => "Update successfully!!!",
+    'admin.delete.success' => "Delete successfully!!!",
+
+    'admin.add.fail' => "Add failed!!!",
+    'admin.update.fail' => "Update failed!!!",
+    'admin.delete.fail' => "Delete failed!!!",
+  
+    'admin.notFound' => "Page could not be found!!!",
+     
 ];

@@ -53,9 +53,9 @@ class UserController extends Controller
             $data = $request->all();
         $this->userRepository->create($data);
             DB::commit();
-            return redirect()->route('user.index');
+            return redirect()->route('user.index')->with("success",trans('tpl.admin.add.success'));
         } catch (\Exception $exception) {
-            return redirect()->route('user.index');
+            return redirect()->route('user.index')->with("error",trans('tpl.admin.add.fail'));
         }
     }
 
@@ -72,7 +72,7 @@ class UserController extends Controller
             $user = User::findOrFail($id);
             return view('user.show', array('user' => $user));
         } catch (\Exception $exception){
-            return redirect()->route('user.index');
+            return redirect()->route('user.index')->with("error",trans('tpl.admin.notFound'));
         }
     }
 
@@ -89,7 +89,7 @@ class UserController extends Controller
             $user = User::findOrFail($id);
             return view('user.edit', array('user' => $user));
         } catch (\Exception $exception){
-            return redirect()->route('user.index');
+            return redirect()->route('user.index')->with("error",trans('tpl.admin.notFound'));
         }
     }
 
@@ -108,9 +108,9 @@ class UserController extends Controller
             $data = $request->all();
             $user = $this->userRepository->update($id, $data);
             DB::commit();
-            return redirect()->route('user.index');
+            return redirect()->route('user.index')->with("success",trans('tpl.admin.update.success'));
         } catch (\Exception $exception) {
-            return redirect()->route('user.index');
+            return redirect()->route('user.index')->with("error",trans('tpl.admin.update.fail'));
         }
     }
 
@@ -126,9 +126,9 @@ class UserController extends Controller
             DB::beginTransaction();
             $this->userRepository->delete($id);
             DB::commit();
-            return redirect()->route('user.index');
+            return redirect()->route('user.index')->with("success",trans('tpl.admin.delete.success'));
         } catch (\Exception $exception) {
-            return redirect()->route('user.index');
+            return redirect()->route('user.index')->with("error",trans('tpl.admin.delete.fail'));
         }
     }
 }

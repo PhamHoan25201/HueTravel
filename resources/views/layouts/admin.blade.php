@@ -258,6 +258,7 @@
             {{-- Main --}}         
 
             <div class="main-content container-fluid">
+                @include('flash_message');
                 @yield('content')
             </div>
             

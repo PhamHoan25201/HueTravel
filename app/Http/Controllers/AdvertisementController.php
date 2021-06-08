@@ -58,9 +58,9 @@ class AdvertisementController extends Controller
             $data = $request->all();
             $this->advertisementRepository->create($data);
             DB::commit();
-            return redirect()->route('advertisement.index');
+            return redirect()->route('advertisement.index')->with("success",trans('tpl.admin.add.success'));
         } catch (\Exception $exception) {
-            return redirect()->route('advertisement.index');
+            return redirect()->route('advertisement.index')->with("error",trans('tpl.admin.add.fail'));
         }
     }
 
@@ -79,7 +79,7 @@ class AdvertisementController extends Controller
             DB::commit();
             return view('advertisement.show', array('advertisement' => $advertisement));
         } catch (\Exception $exception) {
-            return redirect()->route('advertisement.index');
+            return redirect()->route('advertisement.index')->with("error",trans('tpl.admin.notFound'));
         }
     }
 
@@ -98,7 +98,7 @@ class AdvertisementController extends Controller
             DB::commit();
             return view('advertisement.edit', array('advertisement' => $advertisement));
         } catch (\Exception $exception) {
-            return redirect()->route('advertisement.index');        
+            return redirect()->route('advertisement.index')->with("error",trans('tpl.admin.notFound'));        
         }
     }
 
@@ -116,9 +116,9 @@ class AdvertisementController extends Controller
             $data = $request->all();
             $this->advertisementRepository->update($id, $data);
             DB::commit();
-            return redirect()->route('advertisement.index');
+            return redirect()->route('advertisement.index')->with("success",trans('tpl.admin.update.success'));
         } catch (\Exception $exception) {
-            return redirect()->route('advertisement.index');
+            return redirect()->route('advertisement.index')->with("error",trans('tpl.admin.update.fail'));
         }
     }
 
@@ -134,9 +134,9 @@ class AdvertisementController extends Controller
             DB::beginTransaction();
             $this->advertisementRepository->delete($id);
             DB::commit();
-            return redirect()->route('advertisement.index');
+            return redirect()->route('advertisement.index')->with("success",trans('tpl.admin.delete.success'));
         } catch (\Exception $exception) {
-            return redirect()->route('advertisement.index');
+            return redirect()->route('advertisement.index')->with("error",trans('tpl.admin.delete.fail'));
         }
     }
 }

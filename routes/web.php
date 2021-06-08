@@ -29,8 +29,6 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-//Route::get('Adminn','App\Http\Controllers\LoginController@index')->name('login');
-
 Route::prefix('admin')->group(function(){
 
     Route::get('/', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
@@ -39,9 +37,7 @@ Route::prefix('admin')->group(function(){
      * Route for The Loai
      */
     // Index URI: category
-    // Route::get('category', 'CategoryController@index')->name('category.index');
-
-    //Route::resource('category', 'App\Http\Controllers\CategoryController');
+    
     Route::resource('category', CategoryController::class);
 
     /**
