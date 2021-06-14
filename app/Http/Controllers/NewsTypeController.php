@@ -63,6 +63,7 @@ class NewsTypeController extends Controller
             DB::commit();
             return redirect()->route('newstype.index')->with("success",trans('tpl.admin.add.success'));
         } catch (\Exception $exception) {
+            DB::rollBack();
             return redirect()->route('newstype.index')->with("error",trans('tpl.admin.add.fail'));
         }
     }
@@ -83,6 +84,7 @@ class NewsTypeController extends Controller
             DB::commit();
             return view('newstype.show', array('newstype' => $newstype), array('listCategory' => $listCategory));
         } catch (\Exception $exception) {
+            DB::rollBack();
             return redirect()->route('newstype.index')->with("error",trans('tpl.admin.notFound'));
         }
     }
@@ -102,6 +104,7 @@ class NewsTypeController extends Controller
             DB::commit();
             return view('newstype.edit', array('newstype' => $newstype), array('listCategory' => $listCategory));
         } catch (\Exception $exception) {
+            DB::rollBack();
             return redirect()->route('newstype.index')->with("error",trans('tpl.admin.notFound'));        
         }
     }
@@ -122,6 +125,7 @@ class NewsTypeController extends Controller
             DB::commit();
             return redirect()->route('newstype.index')->with("success",trans('tpl.admin.update.success'));
         } catch (\Exception $exception) {
+            DB::rollBack();
             return redirect()->route('newstype.index')->with("error",trans('tpl.admin.update.fail'));        
         }
     }
@@ -140,6 +144,7 @@ class NewsTypeController extends Controller
             DB::commit();
             return redirect()->route('newstype.index')->with("success",trans('tpl.admin.delete.success'));
         } catch (\Exception $exception) {
+            DB::rollBack();
             return redirect()->route('newstype.index')->with("error",trans('tpl.admin.delete.fail'));
         }
     }
