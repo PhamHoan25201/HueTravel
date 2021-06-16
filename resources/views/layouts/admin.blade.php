@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{asset('/AdminUser/assets/vendors/perfect-scrollbar/perfect-scrollbar.css')}}">
     <link rel="stylesheet" href="{{asset('/AdminUser/assets/css/app.css')}}">
     <link rel="shortcut icon" href="{{asset('/AdminUser/assets/images/favicon.svg" type="image/x-icon')}}">
+    <script src="{{asset('/AdminUser/js/ckeditor/ckeditor.js')}}"></script>
 </head>
 <body>
     <div id="app">
@@ -280,14 +281,13 @@
 <script src="{{asset('/AdminUser/assets/js/feather-icons/feather.min.js')}}"></script>
 <script src="{{asset('/AdminUser/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
 <script src="{{asset('/AdminUser/assets/js/app.js')}}"></script>
-
 <script src="{{asset('/AdminUser/assets/vendors/chartjs/Chart.min.js')}}"></script>
 <script src="{{asset('/AdminUser/assets/vendors/simple-datatables/simple-datatables.js')}}"></script>
 <script src="{{asset('/AdminUser/assets/vendors/apexcharts/apexcharts.min.js')}}"></script>
 <script src="{{asset('/AdminUser/assets/js/pages/dashboard.js')}}"></script>
 <script src="{{asset('/AdminUser/assets/js/vendors.js')}}"></script>
-
 <script src="{{asset('/AdminUser/assets/js/main.js')}}"></script>
+
 </body>
 </html>
 

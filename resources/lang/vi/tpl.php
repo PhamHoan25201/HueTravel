@@ -22,7 +22,7 @@ return [
     'category.index.status' => 'Trạng thái',
     'category.index.status.hidden' => 'Ẩn',
     'category.index.status.show' => 'Hiện',
-    'category.index.edit' => 'Chỉnh sửa',
+    'category.index.edit' => 'Sửa',
     'category.index.delete' => 'Xóa',
 
     'category.create.title' => 'Thêm Thể Loại',
@@ -44,7 +44,7 @@ return [
     'newstype.index.status' => 'Trạng thái',
     'newstype.index.status.hidden' => 'Ẩn',
     'newstype.index.status.show' => 'Hiện',
-    'newstype.index.edit' => 'Chỉnh sửa',
+    'newstype.index.edit' => 'Sửa',
     'newstype.index.delete' => 'Xóa',
     'newstype.index.submit' => 'Xác nhận',
 
@@ -68,7 +68,7 @@ return [
     'news.index.typenewstype' => 'Loại tin',
     'news.index.author' => 'Tác giả',
     'news.index.summary' => 'Tóm tắt',
-    'news.index.edit' => 'Chỉnh sửa',
+    'news.index.edit' => 'Sửa',
     'news.index.delete' => 'Xóa',
     'news.index.submit' => 'Xác nhận',
     'news.index.content' => 'Nội dung',
