@@ -39,9 +39,15 @@
                     </div>
                     <div class="form-group">
                         <label for="email">{{ trans('tpl.news.edit.content') }}:</label>
-                            <textarea rows="9" type="text" class="form-control @if($errors->has('tom_tat')) name_error @endif"  name="noi_dung" >
+                            <textarea name="editor1" id="editor1" rows="9" type="text" class="form-control @if($errors->has('tom_tat')) name_error @endif"  name="noi_dung" >
                                 {{$news->noi_dung}}
                             </textarea>
+                           
+                            <script>
+                                // Replace the <textarea id="editor1"> with a CKEditor
+                                // instance, using default configuration.
+                                CKEDITOR.replace( 'editor1' );
+                            </script>
                             <i class="@if($errors->has('noi_dung')) name_error @endif"> 
                                 @if($errors->has('noi_dung'))
                                     {{ $errors->first('noi_dung') }}
