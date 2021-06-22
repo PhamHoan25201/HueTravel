@@ -25,9 +25,9 @@ class NewsRequest extends FormRequest
     {
         return [
             //
-            'tieu_de' => 'required | min:5 | max:40',
-            'tom_tat' => 'required | min:5 | max:150',
-            'url_img' => 'required | min:5 | max:150',
+            'tieu_de' => 'required | min:5 | max:400',
+            'tom_tat' => 'required | min:5 | max:1500',
+            'url_img' => 'required | min:5 | max:1500',
             'noi_dung' => 'required | min:5 | max:5000',
         ];
     }

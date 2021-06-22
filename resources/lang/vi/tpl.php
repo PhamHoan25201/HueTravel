@@ -190,4 +190,6 @@ return [
 
     'admin.notFound' => "Không thể tìm thấy trang!!!",
 
+    'flashMessage.any' => "Biểu mẫu đã xảy ra lỗi. Vui lòng kiểm tra lại!!!",
+
 ];

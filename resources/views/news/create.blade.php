@@ -43,6 +43,7 @@
                             @endif 
                         </i>
                 </div>
+                
                 <div class="form-group">
                     <label for="email">{{ trans('tpl.news.edit.summary') }}:</label>
                         <input type="text" class="form-control @if($errors->has('tom_tat')) name_error @endif" value="" name="tom_tat" >
@@ -55,13 +56,18 @@
                 
                 <div class="form-group">
                     <label for="email">{{ trans('tpl.news.edit.content') }}:</label>
-                        <textarea rows="9" type="text" class="form-control @if($errors->has('tom_tat')) name_error @endif" value="" name="noi_dung" >
-                        </textarea>
-                        <i class="@if($errors->has('noi_dung')) name_error @endif"> 
-                            @if($errors->has('noi_dung'))
-                                {{ $errors->first('noi_dung') }}
-                            @endif 
-                        </i>
+                    <textarea class="editor1" id="editor1" rows="9" type="text" class="form-control @if($errors->has('tom_tat')) name_error @endif"  name="noi_dung" >
+                    </textarea>
+                   
+                    <script>
+                      
+                         CKEDITOR.replace( 'editor1' );
+                    </script>
+                    <i class="@if($errors->has('noi_dung')) name_error @endif"> 
+                        @if($errors->has('noi_dung'))
+                            {{ $errors->first('noi_dung') }}
+                        @endif 
+                    </i> 
                 </div>
 
                 

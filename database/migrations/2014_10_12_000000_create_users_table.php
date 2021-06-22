@@ -19,9 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->longText('url_img');
-            $table->date('ngay_sinh');
-            $table->string('gioi_tinh');
+            $table->string('profile_image')->nullable();
+            $table->longText('url_img')->nullable();
+            $table->date('ngay_sinh')->nullable();
+            $table->string('gioi_tinh')->nullable();
             $table->boolean('is_admin')->nullable();
             $table->rememberToken();
             $table->timestamps();
