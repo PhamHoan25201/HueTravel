@@ -32,7 +32,7 @@
                   <td><a href="{{ route('news.show',$news->User->id) }}">{{ $news->User->name }}</a></td>
                   <td><a href="{{ route('news.show',$news->id) }}">{{ substr($news->tom_tat,0,20) }}</a></td>
                   <td><a href="{{ route('news.show',$news->id) }}">{{  substr($news->noi_dung,0,20) }}</a></td>
-                  <td><a href="{{ route('news.show',$news->id) }}">{{ $news->url_img }}</a></td>
+                  <td><a href="{{ route('news.show',$news->id) }}"><img src="/image/{{$news->url_img}}" alt="{{$news->url_img}}" width="300px"></a></td>
                   <td><a href="{{ route('news.show',$news->id) }}">{{ $news->so_lan_xem }}</a></td>
                   <td><a href="{{ route('news.show',$news->id) }}">{{ $news->tin_noi_bat }}</a></td> 
                   <td><a href="{{ route('news.show',$news->id) }}">{{ $news->so_luot_like }}</a></td>

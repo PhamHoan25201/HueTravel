@@ -15,6 +15,7 @@
                           <th>{{ trans('tpl.newstype.index.name') }}</th>
                           <th>{{ trans('tpl.newstype.index.typecategory') }}</th>
                           <th>{{ trans('tpl.newstype.index.status') }}</th>
+                          <th>Action </th>
                       </tr>
                   </thead>               
                @foreach($listNewsType as $newstype)
@@ -23,14 +24,15 @@
                   <td><a href="{{ route('newstype.show', $newstype->id) }}">{{ $newstype->name }}</a></td>
                   <td><a href="{{ route('newstype.show',$newstype->category->id) }}">{{ $newstype->category->name }}</a></td>
                   <td>{{ $newstype->status }}</td>
-                  
-                  <td><a href="{{ route('newstype.edit',$newstype->id) }}">{{ trans('tpl.newstype.index.edit') }}</a></td>
                   <td>
-                  <form action="{{ route('newstype.destroy',$newstype->id )}}" method="POST">
-                    {{method_field('DELETE')}}
-                    {{csrf_field()}}
-                    <input type="submit" class="btn btn-danger" value="{{ trans('tpl.newstype.index.delete') }}"/>
-                  </form>
+                    <a href="{{ route('newstype.edit',$newstype->id) }}">
+                    <input type="submit" class="btn btn-info" value="{{ trans('tpl.news.index.edit') }}" style="margin-bottom: 5px"/>
+                    </a>
+                    <form action="{{ route('newstype.destroy',$newstype->id )}}" method="POST">
+                      {{method_field('DELETE')}}
+                      {{csrf_field()}}
+                      <input type="submit" class="btn btn-danger" value="{{ trans('tpl.news.index.delete') }}"/>
+                    </form><br>
                   </td>
                 </tr>
               @endforeach

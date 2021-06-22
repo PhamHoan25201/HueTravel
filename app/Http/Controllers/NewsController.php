@@ -58,17 +58,23 @@ class NewsController extends Controller
      */
     public function store(NewsRequest $request)
     {
-        
         try {
             DB::beginTransaction();
-            $data = $request->all();
-            $this->newsRepository->create($data);
+            $input = $request->all();
+            if ($image = $request->file('url_img')) {
+                $destinationPath = 'image/';
+                $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $image->move($destinationPath, $profileImage);
+                $input['url_img'] = "$profileImage";
+            }
+             $this->newsRepository->create($input);
             DB::commit();
             return redirect()->route('news.index')->with("success",trans('tpl.admin.add.success'));
         } catch (\Exception $exception) {
             DB::rollBack();
             return redirect()->route('news.index')->with("error",trans('tpl.admin.add.fail'));
         }
+        
     }
 
     /**
@@ -124,8 +130,14 @@ class NewsController extends Controller
     {
          try {
             DB::beginTransaction();
-            $data = $request->all();
-            $this->newsRepository->update($id, $data);
+            $input = $request->all();
+            if ($image = $request->file('url_img')) {
+                $destinationPath = 'image/';
+                $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $image->move($destinationPath, $profileImage);
+                $input['url_img'] = "$profileImage";
+            }
+            $this->newsRepository->update($id, $input);
             DB::commit();
             return redirect()->route('news.index')->with("success",trans('tpl.admin.update.success'));
         } catch (\Exception $exception) {

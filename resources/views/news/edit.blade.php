@@ -7,7 +7,7 @@
 
         <div class="row">
             <div class="col-12">
-            <form action="{{ route('news.update',  $news->id) }}" method="post">
+            <form action="{{ route('news.update',  $news->id) }}" method="post" enctype="multipart/form-data">
               {{ csrf_field() }}
               {{ method_field('put') }}
                 <div class="form-group">
@@ -21,7 +21,7 @@
                 </div>
                 <div class="form-group">
                     <label for="email">{{ trans('tpl.news.edit.url') }}:</label>
-                        <input type="text" class="form-control @if($errors->has('url_img')) name_error @endif" value="{{$news->url_img}}" name="url_img" >
+                        <input type="file" placeholder="image" class="form-control @if($errors->has('url_img')) name_error @endif" value="{{$news->url_img}}" name="url_img" >
                         <i class="@if($errors->has('url_img')) name_error @endif"> 
                             @if($errors->has('url_img'))
                                 {{ $errors->first('url_img') }}

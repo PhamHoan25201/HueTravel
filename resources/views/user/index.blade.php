@@ -18,6 +18,7 @@
                           <th>{{ trans('tpl.user.index.ngaysinh') }}</th>
                           <th>{{ trans('tpl.user.index.sex') }}</th>
                           <th>{{ trans('tpl.user.index.is_admin') }}</th>
+                          <th>Action</th>
                           
                       </tr>
                   </thead>
@@ -32,14 +33,15 @@
                   <td><a href="{{ route('user.show', $user->id) }}">{{ $user->gioi_tinh }}</a></td>
                   <td><a href="{{ route('user.show', $user->id) }}">{{ $user->is_admin }}</a></td>
                   
-                  
-                  <td><a href="{{ route('user.edit', $user->id)}}">{{ trans('tpl.category.index.edit') }}</a></td>
                   <td>
-                    <form action="{{ route('user.destroy',$user->id)}}" method="POST">
+                    <a href="{{ route('user.edit',$user->id) }}">
+                    <input type="submit" class="btn btn-info" value="{{ trans('tpl.news.index.edit') }}" style="margin-bottom: 5px"/>
+                    </a>
+                    <form action="{{ route('user.destroy',$user->id )}}" method="POST">
                       {{method_field('DELETE')}}
                       {{csrf_field()}}
-                      <input type="submit" class="btn btn-danger" value="{{ trans('tpl.category.index.delete') }}"/>
-                    </form>
+                      <input type="submit" class="btn btn-danger" value="{{ trans('tpl.news.index.delete') }}"/>
+                    </form><br>
                   </td>
                 </tr>
               @endforeach
