@@ -24,8 +24,8 @@ class AdvertisementRequest extends FormRequest
     public function rules()
     {
         return [
-            'url_img1' => 'required | min:5 | max:150',
-            'url_img2' => 'required | min:5 | max:150',
+            'url_img1' => 'required | image | mimes:jpeg,png,jpg,gif,svg | max:2048',
+            'url_img2' => 'required | image | mimes:jpeg,png,jpg,gif,svg | max:2048',
             'description' => 'required | min:5 | max:5000',
         ];
     }

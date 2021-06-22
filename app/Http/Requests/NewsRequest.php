@@ -27,7 +27,7 @@ class NewsRequest extends FormRequest
             //
             'tieu_de' => 'required | min:5 | max:400',
             'tom_tat' => 'required | min:5 | max:1500',
-            'url_img' => 'required | min:5 | max:1500',
+            'url_img' => 'required | image | mimes:jpeg,png,jpg,gif,svg | max:2048',
             'noi_dung' => 'required | min:5 | max:5000',
         ];
     }
@@ -42,7 +42,6 @@ class NewsRequest extends FormRequest
             'tom_tat.max' => trans('tpl.tom_tat.max'),
 
             'url_img.required' => trans('tpl.url_img.required'),
-            'url_img.min' => trans('tpl.url_img.min'),
             'url_img.max' => trans('tpl.url_img.max'),
 
             'noi_dung.required' => trans('tpl.noi_dung.required'),

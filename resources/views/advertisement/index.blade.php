@@ -17,6 +17,7 @@
                           <th>{{ trans('tpl.advertisement.index.startdate') }}</th>
                           <th>{{ trans('tpl.advertisement.index.enddate') }}</th>
                           <th>{{ trans('tpl.advertisement.index.description') }}</th>
+                          <th>Action </th>
                           
                       </tr>
                   </thead>
@@ -24,20 +25,21 @@
                @foreach($listAdvertisement as $advertisement)
                 <tr>
                   <th>{{ increment() }}</th>
-                  <td><a href="{{ route('advertisement.show', $advertisement->id) }}">{{ $advertisement->url_img1 }}</a></td>
-                  <td><a href="{{ route('advertisement.show', $advertisement->id) }}">{{ $advertisement->url_img2 }}</a></td>
+                  <td><a href="{{ route('advertisement.show', $advertisement->id) }}"><img src="/image/{{$advertisement->url_img1}}" alt="{{$advertisement->url_img1}}" width="300px"></a></td>
+                  <td><a href="{{ route('advertisement.show', $advertisement->id) }}"><img src="/image/{{$advertisement->url_img2}}" alt="{{$advertisement->url_img2}}" width="300px"></a></td>
                   <td><a href="{{ route('advertisement.show', $advertisement->id) }}">{{ $advertisement->start_date }}</a></td>
                   <td><a href="{{ route('advertisement.show', $advertisement->id) }}">{{ $advertisement->end_date }}</a></td>
                   <td><a href="{{ route('advertisement.show', $advertisement->id) }}">{{ $advertisement->description }}</a></td>
                   
-                  
-                  <td><a href="{{ route('advertisement.edit', $advertisement->id)}}">{{ trans('tpl.category.index.edit') }}</a></td>
                   <td>
-                    <form action="{{ route('advertisement.destroy',$advertisement->id)}}" method="POST">
+                    <a href="{{ route('advertisement.edit',$advertisement->id) }}">
+                    <input type="submit" class="btn btn-info" value="{{ trans('tpl.news.index.edit') }}" style="margin-bottom: 5px"/>
+                    </a>
+                    <form action="{{ route('advertisement.destroy',$advertisement->id )}}" method="POST">
                       {{method_field('DELETE')}}
                       {{csrf_field()}}
-                      <input type="submit" class="btn btn-danger" value="{{ trans('tpl.category.index.delete') }}"/>
-                    </form>
+                      <input type="submit" class="btn btn-danger" value="{{ trans('tpl.news.index.delete') }}"/>
+                    </form><br>
                   </td>
                 </tr>
               @endforeach

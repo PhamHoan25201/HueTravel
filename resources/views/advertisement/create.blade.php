@@ -18,11 +18,11 @@
                     </ul>
                 </div>
             @endif            --}}
-        <form action="{{ route('advertisement.store') }}" method="post">
+        <form action="{{ route('advertisement.store') }}" method="post" enctype="multipart/form-data">
           {{ csrf_field() }}
             <div class="form-group">
             <label for="email">{{ trans('tpl.advertisement.create.url1') }}:</label>
-                <input type="text" class="form-control @if($errors->has('url_img1')) name_error @endif" value="" name="url_img1" >
+                <input type="file" placeholder="image" class="form-control @if($errors->has('url_img1')) name_error @endif" value="" name="url_img1" >
                <i class="@if($errors->has('url_img1')) name_error @endif"> 
                     @if($errors->has('url_img1'))
                         {{ $errors->first('url_img1') }}
@@ -32,7 +32,7 @@
 
             <div class="form-group">
                 <label for="email">{{ trans('tpl.advertisement.create.url2') }}:</label>
-                    <input type="text" class="form-control @if($errors->has('url_img1')) name_error @endif" value="" name="url_img2" >
+                    <input type="file" placeholder="image" class="form-control @if($errors->has('url_img1')) name_error @endif" value="" name="url_img2" >
                    <i class="@if($errors->has('url_img2')) name_error @endif"> 
                         @if($errors->has('url_img2'))
                             {{ $errors->first('url_img2') }}

@@ -55,8 +55,15 @@ class AdvertisementController extends Controller
 
         try {
             DB::beginTransaction();
-            $data = $request->all();
-            $this->advertisementRepository->create($data);
+            $input = $request->all();
+            if ($image = $request->file('url_img1', 'url_img2')) {
+                $destinationPath = 'image/';
+                $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $image->move($destinationPath, $profileImage);
+                $input['url_img1']= "$profileImage";
+                $input['url_img2'] = "$profileImage";
+            }
+            $this->advertisementRepository->create($input);
             DB::commit();
             return redirect()->route('advertisement.index')->with("success",trans('tpl.admin.add.success'));
         } catch (\Exception $exception) {
@@ -116,8 +123,15 @@ class AdvertisementController extends Controller
     {
         try {
             DB::beginTransaction();
-            $data = $request->all();
-            $this->advertisementRepository->update($id, $data);
+            $input = $request->all();
+            if ($image = $request->file('url_img1', 'url_img2')) {
+                $destinationPath = 'image/';
+                $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $image->move($destinationPath, $profileImage);
+                $input['url_img1']= "$profileImage";
+                $input['url_img2'] = "$profileImage";
+            }
+            $this->advertisementRepository->update($id, $input);
             DB::commit();
             return redirect()->route('advertisement.index')->with("success",trans('tpl.admin.update.success'));
         } catch (\Exception $exception) {
