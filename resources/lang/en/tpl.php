@@ -192,5 +192,7 @@ return [
     'admin.delete.fail' => "Delete failed!!!",
   
     'admin.notFound' => "Page could not be found!!!",
+
+    'flashMessage.any' => "Please check the form below for errors",
      
 ];
