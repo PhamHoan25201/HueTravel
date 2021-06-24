@@ -23,7 +23,11 @@
                   <th>{{ increment() }}</th>
                   <td><a href="{{ route('newstype.show', $newstype->id) }}">{{ $newstype->name }}</a></td>
                   <td><a href="{{ route('newstype.show',$newstype->category->id) }}">{{ $newstype->category->name }}</a></td>
-                  <td>{{ $newstype->status }}</td>
+                  @if ($newstype->status==1)
+                      <td>{{ trans('tpl.newstype.index.status.show') }}</td>
+                  @else
+                      <td>{{ trans('tpl.newstype.index.status.hidden') }}</td>
+                  @endif
                   <td>
                     <a href="{{ route('newstype.edit',$newstype->id) }}">
                     <input type="submit" class="btn btn-info" value="{{ trans('tpl.news.index.edit') }}" style="margin-bottom: 5px"/>

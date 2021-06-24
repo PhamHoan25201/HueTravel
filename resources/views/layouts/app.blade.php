@@ -45,10 +45,11 @@
 													
 						</div>
 						<div class="col-md-6 col-sm-12">
-							<form class="search" autocomplete="off">
+							<form action="{{ route('search') }}" method="GET"  class="search" autocomplete="off">
+								{{ csrf_field() }}
 								<div class="form-group">
 									<div class="input-group">
-										<input type="text" name="q" class="form-control" placeholder="Tìm kiếm">									
+										<input type="text" name="key" class="form-control" placeholder="Tìm kiếm">									
 										<div class="input-group-btn">
 											<button class="btn btn-primary"><i class="ion-search"></i></button>
 										</div>
@@ -138,7 +139,9 @@
 							<li class="for-tablet"><a href="register.html">Register</a></li>
 
 						<!-- Menu Giới thiệu -->
-							<li class="dropdown magz-dropdown magz-dropdown-megamenu"><a href="#">Giới thiệu <i class="ion-ios-arrow-right"></i></a>
+						@foreach ($gioiThieu as $category)
+						@if(count($category->news) > 0)
+							<li class="dropdown magz-dropdown magz-dropdown-megamenu"><a href="#">{{$category->name}} <i class="ion-ios-arrow-right"></i></a>
 								<div class="dropdown-menu megamenu">
 									<div class="megamenu-inner">
 										<div class="row">
@@ -149,79 +152,40 @@
 													</div>
 												</div>
 												<div class="row">
-													<article class="article col-md-3 mini">
-														<div class="inner">
-															<figure>
-																<a href="single.html">
-																	<img src="{{asset('/NormalUser/images/news/img10.jpg')}}" alt="Sample Article">
-																</a>
-															</figure>
-															<div class="padding">
-																<div class="detail">
-																	<div class="time">December 10, 2016</div>
-																	<div class="category"><a href="category.html">Healthy</a></div>
+													<?php
+														$listNews = $category->news->where('tin_noi_bat',1)->sortByDesc('created_at')->take(4);
+													?>
+													@foreach ($listNews as $news)
+														<article class="article col-md-3 mini">
+															<div class="inner">
+																<figure>
+																	<a href="single.html">
+																		<img src="/image/{{$news->url_img}}" alt="Sample Article">
+																	</a>
+																</figure>
+																<div class="padding">
+																	<div class="detail">
+																		<div class="time">{{$news->created_at}}</div>
+																		<div class="category"><a href="category.html">{{$news->newstype->name}}</a></div>
+																	</div>
+																	<h2><a href="single.html"></a>{{$news->tieu_de}}</h2>
 																</div>
-																<h2><a href="single.html">Tổng quan về Cố đô Huế</a></h2>
 															</div>
-														</div>
-													</article>
-													<article class="article col-md-3 mini">
-														<div class="inner">
-															<figure>
-																<a href="single.html">
-																	<img src="{{asset('/NormalUser/images/news/img11.jpg')}}" alt="Sample Article">
-																</a>
-															</figure>
-															<div class="padding">
-																<div class="detail">
-																	<div class="time">December 13, 2016</div>
-																	<div class="category"><a href="category.html">Lifestyle</a></div>
-																</div>
-																<h2><a href="single.html">Tiềm năng Du lịch</a></h2>
-															</div>
-														</div>
-													</article>
-													<article class="article col-md-3 mini">
-														<div class="inner">
-															<figure>
-																<a href="single.html">
-																	<img src="{{asset('/NormalUser/images/news/img14.jpg')}}" alt="Sample Article">
-																</a>
-															</figure>
-															<div class="padding">
-																<div class="detail">
-																	<div class="time">December 14, 2016</div>
-																	<div class="category"><a href="category.html">Travel</a></div>
-																</div>
-																<h2><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
-															</div>
-														</div>
-													</article>
-													<article class="article col-md-3 mini">
-														<div class="inner">
-															<figure>
-																<a href="single.html">
-																	<img src="{{asset('/NormalUser/images/news/img11.jpg')}}" alt="Sample Article">
-																</a>
-															</figure>
-															<div class="padding">
-																<div class="detail">
-																	<div class="time">December 13, 2016</div>
-																	<div class="category"><a href="category.html">Lifestyle</a></div>
-																</div>
-																<h2><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
-															</div>
-														</div>
-													</article>
+														</article>
+													@endforeach
+
 												</div>
 											</div>
 										</div>								
 									</div>
 								</div>
 							</li>
-
-						<!-- Menu Điểm Du lịch -->
-						<li class="dropdown magz-dropdown magz-dropdown-megamenu"><a href="#">Điểm Du lịch <i class="ion-ios-arrow-right"></i> <div class="badge">Hot</div></a>
+							@endif
+						@endforeach
+						<!-- Menu Điểm Du lịch-->
+					@foreach ($diaDiem as $category)
+						@if(count($category->newstype) > 0)
+						<li class="dropdown magz-dropdown magz-dropdown-megamenu"><a href="#">{{$category->name}} <i class="ion-ios-arrow-right"></i> <div class="badge">Hot</div></a>
 							<div class="dropdown-menu megamenu">
 								<div class="megamenu-inner">
 									<div class="row">
@@ -232,11 +196,10 @@
 												</div>
 											</div>
 											<ul class="vertical-menu">
-												<li><a href="#"><i class="ion-ios-circle-outline"></i>Chùa Thiên Mụ</a></li>
-												<li><a href="#"><i class="ion-ios-circle-outline"></i>Biển Cảnh Dương</a></li>
-												<li><a href="#"><i class="ion-ios-circle-outline"></i>Đồi Vọng Cảnh</a></li>
-												<li><a href="#"><i class="ion-ios-circle-outline"></i>Đại Nội Huế</a></li>
-												<li><a href="#"><i class="ion-ios-circle-outline"></i>Lăng tẩm</a></li>
+												@foreach ($category->newstype as $featured)
+													<li><a href="#"><i class="ion-ios-circle-outline"></i>{{$featured->name}}</a></li>
+
+												@endforeach
 											</ul>
 										</div>
 										<div class="col-md-9">
@@ -246,63 +209,40 @@
 												</div>
 											</div>
 											<div class="row">
-												<article class="article col-md-4 mini">
-													<div class="inner">
-														<figure>
-															<a href="single.html">
-																<img src="{{asset('/NormalUser/images/news/img10.jpg')}}" alt="Sample Article">
-															</a>
-														</figure>
-														<div class="padding">
-															<div class="detail">
-																<div class="time">December 10, 2016</div>
-																<div class="category"><a href="category.html">Healthy</a></div>
+													<?php
+														$listNews = $category->news->where('tin_noi_bat',1)->sortByDesc('created_at')->take(3);
+													?>
+													@foreach ($listNews as $news)
+														<article class="article col-md-4 mini">
+															<div class="inner">
+																<figure>
+																	<a href="single.html">
+																		<img src="/image/{{$news->url_img}}" alt="Sample Article">
+																	</a>
+																</figure>
+																<div class="padding">
+																	<div class="detail">
+																		<div class="time">{{$news->created_at}}</div>
+																		<div class="category"><a href="category.html">{{$news->newstype->name}}</a></div>
+																	</div>
+																	<h2><a href="single.html"></a>{{$news->tieu_de}}</h2>
+																</div>
 															</div>
-															<h2><a href="single.html">Tổng quan về Cố đô Huế</a></h2>
-														</div>
-													</div>
-												</article>
-												<article class="article col-md-4 mini">
-													<div class="inner">
-														<figure>
-															<a href="single.html">
-																<img src="{{asset('/NormalUser/images/news/img11.jpg')}}" alt="Sample Article">
-															</a>
-														</figure>
-														<div class="padding">
-															<div class="detail">
-																<div class="time">December 13, 2016</div>
-																<div class="category"><a href="category.html">Lifestyle</a></div>
-															</div>
-															<h2><a href="single.html">Tiềm năng Du lịch</a></h2>
-														</div>
-													</div>
-												</article>
-												<article class="article col-md-4 mini">
-													<div class="inner">
-														<figure>
-															<a href="single.html">
-																<img src="{{asset('/NormalUser/images/news/img14.jpg')}}" alt="Sample Article">
-															</a>
-														</figure>
-														<div class="padding">
-															<div class="detail">
-																<div class="time">December 14, 2016</div>
-																<div class="category"><a href="category.html">Travel</a></div>
-															</div>
-															<h2><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
-														</div>
-													</div>
-												</article>
+														</article>
+													@endforeach
 											</div>
 										</div>
 									</div>								
 								</div>
 							</div>
 						</li>
+						@endif
+					@endforeach
 
-						<!-- Menu Trải nghiệm -->
-						<li class="dropdown magz-dropdown magz-dropdown-megamenu"><a href="category.html">Trải nghiệm <i class="ion-ios-arrow-right"></i></a>
+					<!-- Menu Du lịch Trải nghiệm -->
+					@foreach ($traiNghiem as $category)
+						@if(count($category->newstype) > 0)
+						<li class="dropdown magz-dropdown magz-dropdown-megamenu"><a href="#">{{$category->name}} <i class="ion-ios-arrow-right"></i></a>
 							<div class="dropdown-menu megamenu">
 								<div class="megamenu-inner">
 									<div class="row">
@@ -313,10 +253,10 @@
 												</div>
 											</div>
 											<ul class="vertical-menu">
-												<li><a href="category.html"><i class="ion-ios-circle-outline"></i>Danh lam - Thắng cảnh</a></li>
-												<li><a href="#"><i class="ion-ios-circle-outline"></i>Ẩm thực</a></li>
-												<li><a href="#"><i class="ion-ios-circle-outline"></i>Văn hóa & Lễ hội</a></li>
-												<li><a href="#"><i class="ion-ios-circle-outline"></i>Di tích Lịch sử</a></li>
+												@foreach ($category->newstype as $featured)
+													<li><a href="#"><i class="ion-ios-circle-outline"></i>{{$featured->name}}</a></li>
+
+												@endforeach
 											</ul>
 										</div>
 										<div class="col-md-9">
@@ -326,53 +266,27 @@
 												</div>
 											</div>
 											<div class="row">
-												<article class="article col-md-4 mini">
-													<div class="inner">
-														<figure>
-															<a href="single.html">
-																<img src="{{asset('/NormalUser/images/news/img10.jpg')}}" alt="Sample Article">
-															</a>
-														</figure>
-														<div class="padding">
-															<div class="detail">
-																<div class="time">December 10, 2016</div>
-																<div class="category"><a href="category.html">Healthy</a></div>
+												<?php
+													$listNews = $category->news->where('tin_noi_bat',1)->sortByDesc('created_at')->take(3);
+												?>
+												@foreach ($listNews as $news)
+													<article class="article col-md-4 mini">
+														<div class="inner">
+															<figure>
+																<a href="single.html">
+																	<img src="/image/{{$news->url_img}}" alt="Sample Article">
+																</a>
+															</figure>
+															<div class="padding">
+																<div class="detail">
+																	<div class="time">{{$news->created_at}}</div>
+																	<div class="category"><a href="category.html">{{$news->newstype->name}}</a></div>
+																</div>
+																<h2><a href="single.html"></a>{{$news->tieu_de}}</h2>
 															</div>
-															<h2><a href="single.html">Tổng quan về Cố đô Huế</a></h2>
 														</div>
-													</div>
-												</article>
-												<article class="article col-md-4 mini">
-													<div class="inner">
-														<figure>
-															<a href="single.html">
-																<img src="{{asset('/NormalUser/images/news/img11.jpg')}}" alt="Sample Article">
-															</a>
-														</figure>
-														<div class="padding">
-															<div class="detail">
-																<div class="time">December 13, 2016</div>
-																<div class="category"><a href="category.html">Lifestyle</a></div>
-															</div>
-															<h2><a href="single.html">Tiềm năng Du lịch</a></h2>
-														</div>
-													</div>
-												</article>
-												<article class="article col-md-4 mini">
-													<div class="inner">
-														<figure>
-															<a href="single.html">
-																<img src="{{asset('/NormalUser/images/news/img14.jpg')}}" alt="Sample Article">
-															</a>
-														</figure>
-														<div class="padding">
-															<div class="detail">
-																<div class="time">December 14, 2016</div>
-																<div class="category"><a href="category.html">Travel</a></div>
-															</div>
-															<h2><a href="single.html">5 trải nghiệm về đêm ở Thành phố Huế</a></h2>
-														</div>
-													</div>
+													</article>
+												@endforeach
 												</article>
 											</div>
 										</div>
@@ -380,104 +294,69 @@
 								</div>
 							</div>
 						</li>
+						@endif
+					@endforeach
 
-						<!-- Dịch vụ Du lịch -->
+						<!-- Menu Cẩm nang và kỹ năng -->
+						@foreach ($camNang as $category)
+						@if(count($category->news) > 0)
+							<li class="dropdown magz-dropdown magz-dropdown-megamenu"><a href="#">{{$category->name}} <i class="ion-ios-arrow-right"></i></a>
+								<div class="dropdown-menu megamenu">
+									<div class="megamenu-inner">
+										<div class="row">
+											<div class="col-md-12">
+												<div class="row">
+													<div class="col-md-12">
+														<h2 class="megamenu-title">Featured Posts</h2>
+													</div>
+												</div>
+												<div class="row">
+													<?php
+														$listNews = $category->news->where('tin_noi_bat',1)->sortByDesc('created_at')->take(4);
+													?>
+													@foreach ($listNews as $news)
+														<article class="article col-md-3 mini">
+															<div class="inner">
+																<figure>
+																	<a href="single.html">
+																		<img src="/image/{{$news->url_img}}" alt="Sample Article">
+																	</a>
+																</figure>
+																<div class="padding">
+																	<div class="detail">
+																		<div class="time">{{$news->created_at}}</div>
+																		<div class="category"><a href="category.html">{{$news->newstype->name}}</a></div>
+																	</div>
+																	<h2><a href="single.html"></a>{{$news->tieu_de}}</h2>
+																</div>
+															</div>
+														</article>
+													@endforeach
 
-						<li class="dropdown magz-dropdown">
-							<a href="category.html">Dịch vụ du lịch <i class="ion-ios-arrow-right"></i></a>
-							<ul class="dropdown-menu">
-								<li><a href="index.html">Công ty Lữ hành</a></li>
-								<li><a href="category.html">Các Tour Du lịch</a></li>
-								<li><a href="single.html">Cơ sở Lưu trú</a></li>
-								<li><a href="page.html">Danh sách nhà hàng</a></li>
-								<li><a href="search.html">Vận chuyển du lịch</a></li>
-							</ul>
-						</li>
-
-						<!-- Cẩm nang và kỹ năng -->
-
-						<li class="dropdown magz-dropdown magz-dropdown-megamenu"><a href="#">Cẩm nang và Kỹ năng <i class="ion-ios-arrow-right"></i> <div class="badge">Hot</div></a>
-							<div class="dropdown-menu megamenu">
-								<div class="megamenu-inner">
-									<div class="row">
-										<div class="col-md-12">
-											<div class="row">
-												<div class="col-md-12">
-													<h2 class="megamenu-title">Featured Posts</h2>
 												</div>
 											</div>
-											<div class="row">
-												<article class="article col-md-3 mini">
-													<div class="inner">
-														<figure>
-															<a href="single.html">
-																<img src="{{asset('/NormalUser/images/news/img10.jpg')}}" alt="Sample Article">
-															</a>
-														</figure>
-														<div class="padding">
-															<div class="detail">
-																<div class="time">December 10, 2016</div>
-																<div class="category"><a href="category.html">Healthy</a></div>
-															</div>
-															<h2><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
-														</div>
-													</div>
-												</article>
-												<article class="article col-md-3 mini">
-													<div class="inner">
-														<figure>
-															<a href="single.html">
-																<img src="{{asset('/NormalUser/images/news/img11.jpg')}}" alt="Sample Article">
-															</a>
-														</figure>
-														<div class="padding">
-															<div class="detail">
-																<div class="time">December 13, 2016</div>
-																<div class="category"><a href="category.html">Lifestyle</a></div>
-															</div>
-															<h2><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
-														</div>
-													</div>
-												</article>
-												<article class="article col-md-3 mini">
-													<div class="inner">
-														<figure>
-															<a href="single.html">
-																<img src="{{asset('/NormalUser/images/news/img14.jpg')}}" alt="Sample Article">
-															</a>
-														</figure>
-														<div class="padding">
-															<div class="detail">
-																<div class="time">December 14, 2016</div>
-																<div class="category"><a href="category.html">Travel</a></div>
-															</div>
-															<h2><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
-														</div>
-													</div>
-												</article>
-												<article class="article col-md-3 mini">
-													<div class="inner">
-														<figure>
-															<a href="single.html">
-																<img src="{{asset('/NormalUser/images/news/img11.jpg')}}" alt="Sample Article">
-															</a>
-														</figure>
-														<div class="padding">
-															<div class="detail">
-																<div class="time">December 13, 2016</div>
-																<div class="category"><a href="category.html">Lifestyle</a></div>
-															</div>
-															<h2><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
-														</div>
-													</div>
-												</article>
-												
-											</div>
-										</div>
-									</div>								
+										</div>								
+									</div>
 								</div>
-							</div>
-						</li>
+							</li>
+							@endif
+						@endforeach						
+
+						<!-- Dịch vụ Du lịch -->
+						@foreach ($dichVu as $category)
+							@if(count($category->newstype) > 0)
+								<li class="dropdown magz-dropdown">
+									<a href="category.html">Dịch vụ du lịch <i class="ion-ios-arrow-right"></i></a>
+									<ul class="dropdown-menu">
+										
+										@foreach ($category->newstype as $newstype)
+											<li><a href="index.html">{{$newstype->name}}</a></li>
+										@endforeach
+									</ul>
+								</li>
+							@endif
+						@endforeach
+						
 
 						<!-- Thông tin Liên hệ -->
 						<li><a href="#">Thông tin Liên hệ</a></li>

@@ -28,7 +28,7 @@ class NewsRequest extends FormRequest
             'tieu_de' => 'required | min:5 | max:400',
             'tom_tat' => 'required | min:5 | max:1500',
             'url_img' => 'required | image | mimes:jpeg,png,jpg,gif,svg | max:2048',
-            'noi_dung' => 'required | min:5 | max:5000',
+            'noi_dung' => 'required | min:5 | max:500000',
         ];
     }
     public function messages(){

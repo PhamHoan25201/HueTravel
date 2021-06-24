@@ -23,7 +23,11 @@
 
                   <th>{{ increment() }}</th>
                   <td><a href="{{ route('category.show', $category->id) }}">{{ $category->name }}</a></td>
-                  <td>{{ $category->status }}</td>
+                  @if ($category->status==1)
+                      <td>{{ trans('tpl.category.index.status.show') }}</td>
+                  @else
+                      <td>{{ trans('tpl.category.index.status.hidden') }}</td>
+                  @endif
                   
                   <td>
                     <a href="{{ route('category.edit',$category->id) }}">

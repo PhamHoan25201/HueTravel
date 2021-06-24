@@ -25,7 +25,7 @@ class NewsTypeRequest extends FormRequest
     {
         return [
             //
-            'name' => 'required | min:5 | max:20',
+            'name' => 'required | min:5 | max:200',
         ];
     }
     public function messages(){
