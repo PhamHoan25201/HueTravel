@@ -53,11 +53,6 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        //Category::create($request->all());
-        //Dùng hàm Array__Mergr
-        //Dùng flash Mes Laravel để lấy thông báo ra, Xử lý Exception - tạo tình huống..., Tìm hiểu Transaction
-        
-
         try {
             DB::beginTransaction();
             $data = $request->all();

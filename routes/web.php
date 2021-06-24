@@ -71,11 +71,12 @@ Route::prefix('admin')->group(function(){
      * Route for NormalUser
      * 
 */
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/home/search', [HomeController::class, 'search'])->name('search');
 
 //Route test
 Route::get('/Test', function () {
-    return view('normalUser/index');
+    return view('normalUser/search');
 });
 
 //Login

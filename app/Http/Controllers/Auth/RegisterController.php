@@ -8,6 +8,11 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\NewsResource;
+use App\Models\News;
+use Illuminate\Support\Facades\View;
+use App\Models\Category;
+
 
 class RegisterController extends Controller
 {
@@ -38,6 +43,16 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
+        $gioiThieu = Category::where('id',13)->take(1)->get();
+        $diaDiem = Category::where('id',14)->take(1)->get();
+        $traiNghiem = Category::where('id',15)->take(1)->get();
+        $camNang = Category::where('id',17)->take(1)->get();
+        $dichVu = Category::where('id',16)->take(1)->get();
+        View::share('gioiThieu', $gioiThieu);
+        View::share('diaDiem', $diaDiem);
+        View::share('traiNghiem', $traiNghiem);
+        View::share('camNang', $camNang);
+        View::share('dichVu', $dichVu);
         $this->middleware('guest');
     }
 

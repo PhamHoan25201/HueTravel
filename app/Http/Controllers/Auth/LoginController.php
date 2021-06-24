@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
+use App\Http\Resources\NewsResource;
+use App\Models\News;
+use Illuminate\Support\Facades\View;
+use App\Models\Category;
 
 class LoginController extends Controller
 {
@@ -37,6 +41,16 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        $gioiThieu = Category::where('id',13)->take(1)->get();
+        $diaDiem = Category::where('id',14)->take(1)->get();
+        $traiNghiem = Category::where('id',15)->take(1)->get();
+        $camNang = Category::where('id',17)->take(1)->get();
+        $dichVu = Category::where('id',16)->take(1)->get();
+        View::share('gioiThieu', $gioiThieu);
+        View::share('diaDiem', $diaDiem);
+        View::share('traiNghiem', $traiNghiem);
+        View::share('camNang', $camNang);
+        View::share('dichVu', $dichVu);
         $this->middleware('guest')->except('logout');
     }
     public function logout(Request $request) {

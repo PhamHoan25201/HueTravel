@@ -27,7 +27,7 @@
                @foreach($listNews as $news)
                 <tr>
                   <th>{{ increment() }}</th>
-                  <td style="max-width: 200px"><a href="{{ route('news.show', $news->id) }}">{{ substr($news->tieu_de,0,20) }}</a></td>
+                  <td style="max-width: 200px"><a href="{{ route('news.show', $news->id) }}">{{ $news->tieu_de}}</a></td>
                   <td><a href="{{ route('news.show',$news->newstype->id) }}">{{  substr($news->newstype->name,0,20)}}</a></td>
                   <td><a href="{{ route('news.show',$news->User->id) }}">{{ $news->User->name }}</a></td>
                   <td><a href="{{ route('news.show',$news->id) }}">{{ substr($news->tom_tat,0,20) }}</a></td>
