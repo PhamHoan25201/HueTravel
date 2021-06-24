@@ -196,7 +196,10 @@
 												</div>
 											</div>
 											<ul class="vertical-menu">
-												@foreach ($category->newstype as $featured)
+												<?php
+													$diemNoiBat = $category->newstype->where('status',1)->take(5);
+												?>
+												@foreach ($diemNoiBat as $featured)
 													<li><a href="#"><i class="ion-ios-circle-outline"></i>{{$featured->name}}</a></li>
 
 												@endforeach
