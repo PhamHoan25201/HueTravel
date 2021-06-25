@@ -9,8 +9,8 @@
                     <div class="code">
                         404
                     </div>
-                    <h1>Page could not be found</h1>
-                    <p class="lead">The page you are looking for is not available please check the url you are going to.</p>
+                    <h1>Trang bạn tìm kiếm không tồn tại</h1>
+                    <p class="lead">Vui lòng kiểm tra URL và nhập lại!!!</p>
                     <div class="search-form">														
                         <div class="link">
                             <a href="{{ route('home') }}"> {{ __('Back to Home') }}</a> or

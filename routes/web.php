@@ -72,12 +72,11 @@ Route::prefix('admin')->group(function(){
      * 
 */
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('/home/search', [HomeController::class, 'search'])->name('search');
-
-//Route test
-Route::get('/Test', function () {
-    return view('normalUser/search');
-});
+    Route::get('/home/search', [HomeController::class, 'search'])->name('home.search');
+    Route::get('/home/error', [HomeController::class, 'error'])->name('home.error');
+    Route::get('/home/category/{id}', [HomeController::class, 'getCategory'])->name('home.category');
+    Route::get('/home/newstype/{id}', [HomeController::class, 'getNewsType'])->name('home.newstype');
+    Route::get('/home/news/{id}', [HomeController::class, 'getNews'])->name('home.news');
 
 //Login
 Auth::routes();

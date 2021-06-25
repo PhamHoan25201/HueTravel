@@ -45,8 +45,9 @@
                             </textarea>
                            
                             <script>
-                              
-                                 CKEDITOR.replace( 'editor1' );
+                                config = {};
+                                config.entities_latin = false;
+                                 CKEDITOR.replace( 'editor1', config );
                             </script>
                             <i class="@if($errors->has('noi_dung')) name_error @endif"> 
                                 @if($errors->has('noi_dung'))
