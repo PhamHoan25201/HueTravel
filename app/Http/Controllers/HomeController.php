@@ -42,22 +42,92 @@ class HomeController extends Controller
      */
     public function index()
     {
-		$trending = News::where('tin_noi_bat',1)->orderByDesc('so_luot_like')->limit(5)->get();
-        $xemNhieu = News::where('tin_noi_bat',1)->orderByDesc('so_lan_xem')->limit(5)->get();
-        $baiNoiBat = News::where('tin_noi_bat',1)->get();
-        $QC1 = Advertisement::where('id', 15)->get();
-        $tinMoiNhat = News::orderByDesc('created_at')->take(4)->get();
-        $bestofWeek = News::where('tin_noi_bat', 1)->whereRaw('(curdate() - created_at) < 7')->get();
-        return view('normalUser.index', 
-            array(
-                'trending'=>$trending,
-                'xemNhieu'=>$xemNhieu,
-                'baiNoiBat'=>$baiNoiBat,
-                'QC1'=>$QC1,
-                'tinMoiNhat'=>$tinMoiNhat,
-                'bestofWeek'=>$bestofWeek,
-                
-            ));
+        try {
+            $trending = News::where('tin_noi_bat',1)->orderByDesc('so_luot_like')->limit(5)->get();
+            $xemNhieu = News::where('tin_noi_bat',1)->orderByDesc('so_lan_xem')->limit(5)->get();
+            $baiNoiBat = News::where('tin_noi_bat',1)->get();
+            $QC1 = Advertisement::where('id', 15)->get();
+            $tinMoiNhat = News::orderByDesc('created_at')->take(4)->get();
+            $bestofWeek = News::where('tin_noi_bat', 1)->whereRaw('(curdate() - created_at) < 7')->get();
+            return view('normalUser.index', 
+                array(
+                    'trending'=>$trending,
+                    'xemNhieu'=>$xemNhieu,
+                    'baiNoiBat'=>$baiNoiBat,
+                    'QC1'=>$QC1,
+                    'tinMoiNhat'=>$tinMoiNhat,
+                    'bestofWeek'=>$bestofWeek,
+                    
+                ));
+        } catch (\Exception $exception) {
+            return redirect()->route('home.error');
+        }
+    }
+
+    public function getCategory($id)
+    {
+        
+        try {
+            $category = Category::where('id', $id)->first();
+            $listCategory = Category::where('id',$category->id)->orderByDesc('created_at')->paginate(2);
+            $QC2 = Advertisement::where('id', 16)->take(1)->get();
+            $trending = News::where('tin_noi_bat',1)->orderByDesc('so_luot_like')->limit(1)->get();
+            $trending1 = News::where('tin_noi_bat',1)->orderByDesc('so_luot_like')->limit(7)->get();
+                return view('normalUser.category',
+                    array(
+                        'listCategory'=>$listCategory,
+                        'category'=>$category,
+                        'QC2'=>$QC2,
+                        'trending'=>$trending,
+                        'trending1'=>$trending1,
+                    ));
+        } catch (\Exception $exception) {
+            return redirect()->route('home.error');
+        }
+
+    }
+
+    public function getNewsType($id)
+    {
+        try {
+            $newstype = NewsType::where('id', $id)->first();
+            $listNewsType = NewsType::where('id',$newstype->id)->orderByDesc('created_at')->paginate(2);
+            $QC2 = Advertisement::where('id', 16)->take(1)->get();
+            $trending = News::where('tin_noi_bat',1)->orderByDesc('so_luot_like')->limit(1)->get();
+            $trending1 = News::where('tin_noi_bat',1)->orderByDesc('so_luot_like')->limit(7)->get();
+                return view('normalUser.newstype',
+                    array(
+                        'listNewsType'=>$listNewsType,
+                        'newstype'=>$newstype,
+                        'QC2'=>$QC2,
+                        'trending'=>$trending,
+                        'trending1'=>$trending1,
+                    ));
+        } catch (\Exception $exception) {
+            return redirect()->route('home.error');
+        }
+
+    }
+    public function getNews($id)
+    {
+        
+        try {
+            $news = News::where('id', $id)->first();
+            $listNews = News::where('id',$news->id)->orderByDesc('created_at')->paginate(2);
+            $QC2 = Advertisement::where('id', 16)->take(1)->get();
+            $trending = News::where('tin_noi_bat',1)->orderByDesc('so_luot_like')->limit(1)->get();
+            $trending1 = News::where('tin_noi_bat',1)->orderByDesc('so_luot_like')->limit(7)->get();
+                return view('normalUser.news',
+                        array(
+                            'listNews'=>$listNews,
+                            'news'=>$news,
+                            'QC2'=>$QC2,
+                            'trending'=>$trending,
+                            'trending1'=>$trending1,
+                        ));
+        } catch (\Exception $exception) {
+            return redirect()->route('home.error');
+        }
     }
 
     /**
@@ -78,5 +148,11 @@ class HomeController extends Controller
             'keyword'=>$keyword,
             'news'=> $news,
         ));
+    }
+
+    //Function error
+    public function error()
+    {
+        return view('normalUser.404');
     }
 }

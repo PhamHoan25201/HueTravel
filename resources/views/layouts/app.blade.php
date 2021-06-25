@@ -38,14 +38,13 @@
 					<div class="row">
 						<div class="col-md-3 col-sm-12">
 							<div class="brand">
-								<a href="{{ url('/') }}">
+								<a href="{{ route('home') }}">
 									<img  src="{{asset('/NormalUser/images/logo 1.png')}}" alt="HueTravel Logo" height="80">
 								</a>
 							</div>
-													
 						</div>
 						<div class="col-md-6 col-sm-12">
-							<form action="{{ route('search') }}" method="GET"  class="search" autocomplete="off">
+							<form action="{{ route('home.search') }}" method="GET"  class="search" autocomplete="off">
 								{{ csrf_field() }}
 								<div class="form-group">
 									<div class="input-group">
@@ -141,7 +140,7 @@
 						<!-- Menu Giới thiệu -->
 						@foreach ($gioiThieu as $category)
 						@if(count($category->news) > 0)
-							<li class="dropdown magz-dropdown magz-dropdown-megamenu"><a href="#">{{$category->name}} <i class="ion-ios-arrow-right"></i></a>
+							<li class="dropdown magz-dropdown magz-dropdown-megamenu"><a href="{{route('home.category',['id'=>$category->id])}}">{{$category->name}} <i class="ion-ios-arrow-right"></i></a>
 								<div class="dropdown-menu megamenu">
 									<div class="megamenu-inner">
 										<div class="row">
@@ -159,16 +158,16 @@
 														<article class="article col-md-3 mini">
 															<div class="inner">
 																<figure>
-																	<a href="single.html">
+																	<a href="{{route('home.news',['id'=>$news->id])}}">
 																		<img src="/image/{{$news->url_img}}" alt="Sample Article">
 																	</a>
 																</figure>
 																<div class="padding">
 																	<div class="detail">
 																		<div class="time">{{$news->created_at}}</div>
-																		<div class="category"><a href="category.html">{{$news->newstype->name}}</a></div>
+																		<div class="category"><a href="{{route('home.newstype',['id'=>$news->newstype->id])}}">{{$news->newstype->name}}</a></div>
 																	</div>
-																	<h2><a href="single.html"></a>{{$news->tieu_de}}</h2>
+																	<h2><a href="{{route('home.news',['id'=>$news->id])}}"></a>{{$news->tieu_de}}</h2>
 																</div>
 															</div>
 														</article>
@@ -185,7 +184,7 @@
 						<!-- Menu Điểm Du lịch-->
 					@foreach ($diaDiem as $category)
 						@if(count($category->newstype) > 0)
-						<li class="dropdown magz-dropdown magz-dropdown-megamenu"><a href="#">{{$category->name}} <i class="ion-ios-arrow-right"></i> <div class="badge">Hot</div></a>
+						<li class="dropdown magz-dropdown magz-dropdown-megamenu"><a href="{{route('home.category',['id'=>$category->id])}}">{{$category->name}} <i class="ion-ios-arrow-right"></i> <div class="badge">Hot</div></a>
 							<div class="dropdown-menu megamenu">
 								<div class="megamenu-inner">
 									<div class="row">
@@ -200,7 +199,7 @@
 													$diemNoiBat = $category->newstype->where('status',1)->take(5);
 												?>
 												@foreach ($diemNoiBat as $featured)
-													<li><a href="#"><i class="ion-ios-circle-outline"></i>{{$featured->name}}</a></li>
+													<li><a href="{{route('home.newstype',['id'=>$featured->id])}}"><i class="ion-ios-circle-outline"></i>{{$featured->name}}</a></li>
 
 												@endforeach
 											</ul>
@@ -219,16 +218,16 @@
 														<article class="article col-md-4 mini">
 															<div class="inner">
 																<figure>
-																	<a href="single.html">
+																	<a href="{{route('home.news',['id'=>$news->id])}}">
 																		<img src="/image/{{$news->url_img}}" alt="Sample Article">
 																	</a>
 																</figure>
 																<div class="padding">
 																	<div class="detail">
 																		<div class="time">{{$news->created_at}}</div>
-																		<div class="category"><a href="category.html">{{$news->newstype->name}}</a></div>
+																		<div class="category"><a href="{{route('home.newstype',['id'=>$news->newstype->id])}}">{{$news->newstype->name}}</a></div>
 																	</div>
-																	<h2><a href="single.html"></a>{{$news->tieu_de}}</h2>
+																	<h2><a href="{{route('home.news',['id'=>$news->id])}}"></a>{{$news->tieu_de}}</h2>
 																</div>
 															</div>
 														</article>
@@ -245,7 +244,7 @@
 					<!-- Menu Du lịch Trải nghiệm -->
 					@foreach ($traiNghiem as $category)
 						@if(count($category->newstype) > 0)
-						<li class="dropdown magz-dropdown magz-dropdown-megamenu"><a href="#">{{$category->name}} <i class="ion-ios-arrow-right"></i></a>
+						<li class="dropdown magz-dropdown magz-dropdown-megamenu"><a href="{{route('home.category',['id'=>$category->id])}}">{{$category->name}} <i class="ion-ios-arrow-right"></i></a>
 							<div class="dropdown-menu megamenu">
 								<div class="megamenu-inner">
 									<div class="row">
@@ -257,7 +256,7 @@
 											</div>
 											<ul class="vertical-menu">
 												@foreach ($category->newstype as $featured)
-													<li><a href="#"><i class="ion-ios-circle-outline"></i>{{$featured->name}}</a></li>
+													<li><a href="{{route('home.newstype',['id'=>$featured->id])}}"><i class="ion-ios-circle-outline"></i>{{$featured->name}}</a></li>
 
 												@endforeach
 											</ul>
@@ -276,16 +275,16 @@
 													<article class="article col-md-4 mini">
 														<div class="inner">
 															<figure>
-																<a href="single.html">
+																<a href="{{route('home.news',['id'=>$news->id])}}">
 																	<img src="/image/{{$news->url_img}}" alt="Sample Article">
 																</a>
 															</figure>
 															<div class="padding">
 																<div class="detail">
-																	<div class="time">{{$news->created_at}}</div>
-																	<div class="category"><a href="category.html">{{$news->newstype->name}}</a></div>
+
+																	<div class="category"><a href="{{route('home.newstype',['id'=>$news->newstype->id])}}">{{$news->newstype->name}}</a></div>
 																</div>
-																<h2><a href="single.html"></a>{{$news->tieu_de}}</h2>
+																<h2><a href="{{route('home.news',['id'=>$news->id])}}"></a>{{$news->tieu_de}}</h2>
 															</div>
 														</div>
 													</article>
@@ -303,7 +302,7 @@
 						<!-- Menu Cẩm nang và kỹ năng -->
 						@foreach ($camNang as $category)
 						@if(count($category->news) > 0)
-							<li class="dropdown magz-dropdown magz-dropdown-megamenu"><a href="#">{{$category->name}} <i class="ion-ios-arrow-right"></i></a>
+							<li class="dropdown magz-dropdown magz-dropdown-megamenu"><a href="{{route('home.category',['id'=>$category->id])}}">{{$category->name}} <i class="ion-ios-arrow-right"></i></a>
 								<div class="dropdown-menu megamenu">
 									<div class="megamenu-inner">
 										<div class="row">
@@ -321,16 +320,16 @@
 														<article class="article col-md-3 mini">
 															<div class="inner">
 																<figure>
-																	<a href="single.html">
+																	<a href="{{route('home.news',['id'=>$news->id])}}">
 																		<img src="/image/{{$news->url_img}}" alt="Sample Article">
 																	</a>
 																</figure>
 																<div class="padding">
 																	<div class="detail">
 																		<div class="time">{{$news->created_at}}</div>
-																		<div class="category"><a href="category.html">{{$news->newstype->name}}</a></div>
+																		<div class="category"><a href="{{route('home.newstype',['id'=>$news->newstype->id])}}">{{$news->newstype->name}}</a></div>
 																	</div>
-																	<h2><a href="single.html"></a>{{$news->tieu_de}}</h2>
+																	<h2><a href="{{route('home.news',['id'=>$news->id])}}"></a>{{$news->tieu_de}}</h2>
 																</div>
 															</div>
 														</article>
@@ -349,11 +348,11 @@
 						@foreach ($dichVu as $category)
 							@if(count($category->newstype) > 0)
 								<li class="dropdown magz-dropdown">
-									<a href="category.html">Dịch vụ du lịch <i class="ion-ios-arrow-right"></i></a>
+									<a href="{{route('home.category',['id'=>$category->id])}}">{{$category->name}} <i class="ion-ios-arrow-right"></i></a>
 									<ul class="dropdown-menu">
 										
 										@foreach ($category->newstype as $newstype)
-											<li><a href="index.html">{{$newstype->name}}</a></li>
+											<li><a href="{{route('home.newstype',['id'=>$newstype->id])}}">{{$newstype->name}}</a></li>
 										@endforeach
 									</ul>
 								</li>

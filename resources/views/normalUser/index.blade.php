@@ -38,8 +38,8 @@
                                         <img src="/image/{{$news->url_img}}" alt="{{$news->tieu_de}}">
                                     </figure>
                                     <div class="details">
-                                        <div class="category"><a href="category.html">{{$news->newstype->name}}</a></div>
-                                        <h1><a href="single.html">{{$news->tieu_de}}</a></h1>
+                                        <div class="category"><a href="{{route('home.newstype',['id'=>$news->newstype->id])}}">{{$news->newstype->name}}</a></div>
+                                        <h1><a href="{{route('home.news',['id'=>$news->id])}}">{{$news->tieu_de}}</a></h1>
                                         <div class="time">{{$news->created_at}}</div>
                                     </div>
                                 </article>
@@ -82,14 +82,14 @@
                                     <article class="article-mini">
                                         <div class="inner">
                                             <figure>
-                                                <a href="single.html">
+                                                <a href="{{route('home.news',['id'=>$news->id])}}">
                                                     <img src="/image/{{$news->url_img}}" alt="Sample Article">
                                                 </a>
                                             </figure>
                                             <div class="padding">
-                                                <h1><a href="single.html">{{$news->tieu_de}}</a></h1>
+                                                <h1><a href="{{route('home.news',['id'=>$news->id])}}">{{$news->tieu_de}}</a></h1>
                                                 <div class="detail">
-                                                    <div class="category"><a href="category.html">{{$news->newstype->name}}</a></div>
+                                                    <div class="category"><a href="{{route('home.newstype',['id'=>$news->newstype->id])}}">{{$news->newstype->name}}</a></div>
                                                    
                                                 </div>
                                             </div>
@@ -123,24 +123,24 @@
                             <article class="col-md-12 article-list">
                                 <div class="inner">
                                     <figure>
-                                        <a href="single.html">
+                                        <a href="{{route('home.news',['id'=>$news->id])}}">
                                             <img src="/image/{{$news->url_img}}" alt="{{$news->tieu_de}}">
                                         </a>
                                     </figure>
                                     <div class="details">
                                         <div class="detail">
                                             <div class="category">
-                                                <a href="#">{{$news->newstype->name}}</a>
+                                                <a href="{{route('home.newstype',['id'=>$news->newstype->id])}}">{{$news->newstype->name}}</a>
                                             </div>
                                             <div class="time">{{$news->created_at}}</div>
                                         </div>
-                                        <h1><a href="single.html">{{$news->tieu_de}}</a></h1>
+                                        <h1><a href="{{route('home.news',['id'=>$news->id])}}">{{$news->tieu_de}}</a></h1>
                                         <p>
                                             {{$news->tom_tat}}
                                     </p>
                                         <footer>
                                             <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>273</div></a>
-                                            <a class="btn btn-primary more" href="single.html">
+                                            <a class="btn btn-primary more" href="{{route('home.news',['id'=>$news->id])}}">
                                                 <div>More</div>
                                                 <div><i class="ion-ios-arrow-thin-right"></i></div>
                                             </a>
@@ -165,24 +165,24 @@
                         <article class="col-md-12 article-list">
                             <div class="inner">
                                 <figure>
-                                    <a href="single.html">
+                                    <a href="{{route('home.news',['id'=>$news->id])}}">
                                         <img src="/image/{{$news->url_img}}" alt="{{$news->tieu_de}}">
                                     </a>
                                 </figure>
                                 <div class="details">
                                     <div class="detail">
                                         <div class="category">
-                                            <a href="#">{{$news->newstype->name}}</a>
+                                            <a href="{{route('home.newstype',['id'=>$news->newstype->id])}}">{{$news->newstype->name}}</a>
                                         </div>
                                         <div class="time">{{$news->created_at}}</div>
                                     </div>
-                                    <h1><a href="single.html">{{$news->tieu_de}}</a></h1>
+                                    <h1><a href="{{route('home.news',['id'=>$news->id])}}">{{$news->tieu_de}}</a></h1>
                                     <p>
                                         {{$news->tom_tat}}
                                    </p>
                                     <footer>
                                         <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>273</div></a>
-                                        <a class="btn btn-primary more" href="single.html">
+                                        <a class="btn btn-primary more" href="{{route('home.news',['id'=>$news->id])}}">
                                             <div>More</div>
                                             <div><i class="ion-ios-arrow-thin-right"></i></div>
                                         </a>
@@ -201,30 +201,30 @@
             <div class="row">
                 @foreach ($dichVu as $category)
                     <?php 
-                        $listDichVu = $category->news->where('tin_noi_bat',1)->sortByDesc('created_at')->take(4);
+                        $listDichVu = $category->news->where('tin_noi_bat',1)->sortByDesc('created_at')->take(2000);
                     ?>
                     @foreach ($listDichVu as $news)
                     <article class="col-md-12 article-list">
                         <div class="inner">
                             <figure>
-                                <a href="single.html">
+                                <a href="{{route('home.news',['id'=>$news->id])}}">
                                     <img src="/image/{{$news->url_img}}" alt="{{$news->tieu_de}}">
                                 </a>
                             </figure>
                             <div class="details">
                                 <div class="detail">
                                     <div class="category">
-                                        <a href="#">{{$news->newstype->name}}</a>
+                                        <a href="{{route('home.newstype',['id'=>$news->newstype->id])}}">{{$news->newstype->name}}</a>
                                     </div>
                                     <div class="time">{{$news->created_at}}</div>
                                 </div>
-                                <h1><a href="single.html">{{$news->tieu_de}}</a></h1>
+                                <h1><a href="{{route('home.news',['id'=>$news->id])}}">{{$news->tieu_de}}</a></h1>
                                 <p>
                                     {{$news->tom_tat}}
                                 </p>
                                 <footer>
                                     <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>273</div></a>
-                                    <a class="btn btn-primary more" href="single.html">
+                                    <a class="btn btn-primary more" href="{{route('home.news',['id'=>$news->id])}}">
                                         <div>More</div>
                                         <div><i class="ion-ios-arrow-thin-right"></i></div>
                                     </a>
@@ -257,12 +257,12 @@
                                 <article class="article-mini">
                                     <div class="inner">
                                         <figure>
-                                            <a href="single.html">
+                                            <a href="{{route('home.news',['id'=>$news->id])}}">
                                                 <img src="/image/{{$news->url_img}}" alt="{{$news->tieu_de}}">
                                             </a>
                                         </figure>
                                         <div class="padding">
-                                            <h1><a href="single.html">{{$news->tieu_de}}</a></h1>
+                                            <h1><a href="{{route('home.news',['id'=>$news->id])}}">{{$news->tieu_de}}</a></h1>
                                         </div>
                                     </div>
                                 </article>
@@ -293,7 +293,7 @@
                         <article class="article">
                             <div class="inner">
                                 <figure>
-                                    <a href="single.html">
+                                    <a href="{{route('home.news',['id'=>$news->id])}}">
                                         <img src="/image/{{$news->url_img}}" alt="Sample Article">
                                     </a>
                                 </figure>
@@ -302,7 +302,7 @@
                                             
                                             <div class="category"><a href="category.html">{{$news->newstype->name}}</a></div>
                                     </div>
-                                    <h2><a href="single.html">{{$news->tieu_de}}</a></h2>
+                                    <h2><a href="{{route('home.news',['id'=>$news->id])}}">{{$news->tieu_de}}</a></h2>
                                     <p></p>
                                 </div>
                             </div>
