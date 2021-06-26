@@ -38,31 +38,31 @@ Route::prefix('admin')->group(function(){
      */
     // Index URI: category
     
-    Route::resource('category', CategoryController::class);
+    Route::resource('category', CategoryController::class)->middleware('is_admin');
 
     /**
      * Route for NewsType
      * 
      */
-    Route::resource('newstype', NewsTypeController::class);
+    Route::resource('newstype', NewsTypeController::class)->middleware('is_admin');
 
     /**
      * Route for NewsType
      * 
      */
-    Route::resource('news', NewsController::class);
+    Route::resource('news', NewsController::class)->middleware('is_admin');
 
     /**
      * Route for Advertisement
      * 
      */
-    Route::resource('advertisement', AdvertisementController::class);
+    Route::resource('advertisement', AdvertisementController::class)->middleware('is_admin');
 
     /**
      * Route for User
      * 
      */
-    Route::resource('user', UserController::class);
+    Route::resource('user', UserController::class)->middleware('is_admin');
 
     
     
