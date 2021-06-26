@@ -84,5 +84,9 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $job = (new SendWelcomeEmail($user))->delay(Carbon::now()->addMinutes(1));
+        dispatch($job);
+        return $user;
     }
 }

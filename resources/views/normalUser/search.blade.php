@@ -91,14 +91,14 @@
 							<article class="col-md-12 article-list">
 								<div class="inner">
 									<figure>
-										<a href="single.html">
+										<a href="{{route('home.news',['id'=>$chitiet->id])}}">
 											<img src="/image/{{$chitiet->url_img}}">
 										</a>
 									</figure>
 									<div class="details">
 										<div class="detail">
 											<div class="category">
-												<a href="#">{{$chitiet->newstype->name}}</a>
+												<a href="{{route('home.newstype',['id'=>$chitiet->newstype->id])}}">{{$chitiet->newstype->name}}</a>
 											</div>
 											
 											<div>
@@ -106,13 +106,13 @@
 											</div>
 											
 										</div>
-										<h1><a href="single.html">{{$chitiet->tieu_de}}</a></h1>
+										<h1><a href="{{route('home.news',['id'=>$chitiet->id])}}">{{$chitiet->tieu_de}}</a></h1>
 										<p>
 											{{$chitiet->tom_tat}}
 										</p>
 										<footer>
 											<a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>273</div></a>
-											<a class="btn btn-primary more" href="single.html">
+											<a class="btn btn-primary more" href="{{route('home.news',['id'=>$chitiet->id])}}">
 												<div>More</div>
 												<div><i class="ion-ios-arrow-thin-right"></i></div>
 											</a>
