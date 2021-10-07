@@ -1,6 +1,6 @@
-* text=auto
-*.css linguist-vendored
-*.scss linguist-vendored
-*.js linguist-vendored
-# *.* linguist-language=PHP
+# * text=auto
+# *.css linguist-vendored
+# *.scss linguist-vendored
+# *.js linguist-vendored
+*.* linguist-language=PHP
 
